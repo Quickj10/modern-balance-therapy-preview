@@ -218,7 +218,16 @@ nav.main,.textlink,.trust b,footer.site h3,.brand small,label,.field{font-weight
 .start .way .btn{margin-top:auto;width:100%}
 @media (max-width:860px){ .start .ways{grid-template-columns:1fr;gap:14px} }
 @media (max-width:860px){ .trust .wrap{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (max-width:480px){ .trust .wrap{grid-template-columns:1fr} }
+@media (max-width:600px){
+  .trust{padding-block:6px}
+  .trust .wrap{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+  .trust .wrap>div{flex-direction:column;align-items:center;text-align:center;gap:8px;padding:20px 10px}
+  .trust .wrap>div:nth-child(odd){border-right:1px solid var(--line)}
+  .trust .wrap>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .trust svg{width:22px;height:22px;margin-top:0}
+  .trust b{font-size:.72rem;letter-spacing:.12em;margin-bottom:4px}
+  .trust span{font-size:.82rem;line-height:1.35}
+}
 
 /* welcome: paper card centered on a painted cream band */
 .mirror{position:relative;isolation:isolate;background:var(--paper) url("assets/paint-strokes.svg") center/cover no-repeat;padding-block:clamp(72px,10vw,140px)}
@@ -795,7 +804,7 @@ html.js-roll .roll{display:block}
       <h2 class="reveal" style="--d:4%">Answers to the questions people ask <em>before</em> they call.</h2>
       <ul class="list reveal" style="--d:8%">
         <li><a href="blog/how-do-you-know-if-you-need-therapy/"><img class="press" src="assets/media/press-seedling.png" width="84" height="84" alt="" loading="lazy"><span><span class="eyebrow">Getting started</span><h3>How Do You Know If You Need Therapy? 12 Signs It Might Be Time</h3></span></a></li>
-        <li><a href="blog/affordable-therapy-without-insurance/"><img class="press" src="assets/media/press-hands.png" width="84" height="84" alt="" loading="lazy"><span><span class="eyebrow">Cost</span><h3>Affordable Therapy Without Insurance: Sliding Scale, Superbills and Other Real Options</h3></span></a></li>
+        <li><a href="blog/affordable-therapy-without-insurance/"><img class="press" src="assets/media/press-swirl.png" width="84" height="84" alt="" loading="lazy"><span><span class="eyebrow">Cost</span><h3>Affordable Therapy Without Insurance: Sliding Scale, Superbills and Other Real Options</h3></span></a></li>
         <li><a href="blog/what-to-expect-first-therapy-session/"><img class="press" src="assets/media/press-doorway.png" width="84" height="84" alt="" loading="lazy"><span><span class="eyebrow">First session</span><h3>What to Expect in Your First Therapy Session (So You Can Stop Dreading It)</h3></span></a></li>
       </ul>
       <a class="textlink all reveal" href="blog/">All articles</a>

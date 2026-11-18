@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image, ImageFilter
 D='/private/tmp/claude-502/-Users-ducky/572e0311-2aa7-4266-94e2-2f621f081be4/scratchpad/press/'
 OUT='/Users/ducky/.openclaw/workspace/outputs/modern-balance-therapy/deploy/assets/media/'
-names=['press-seedling','press-hands','press-doorway']
+names=['press-seedling','press-swirl','press-doorway']
 sheet=Image.open(D+'masks.png').convert('L')
 def blur(a,r):
     return np.asarray(Image.fromarray((a*255).astype('uint8')).filter(ImageFilter.GaussianBlur(r)),dtype=np.float32)/255
