@@ -18,6 +18,7 @@ SITE_SRC = DEPLOY.parent / 'site' / 'index.html'         # artifact-contract hom
 SRC = HERE / '_src'
 BASE = 'https://modernbalancetherapy.com/'
 LAUNCH = '--launch' in sys.argv
+PREVIEW_HOST = 'https://quickj10.github.io/modern-balance-therapy-preview/'
 TODAY = '2026-11-18'
 NOINDEX = '' if LAUNCH else '<meta name="robots" content="noindex,nofollow"><!-- PREVIEW ONLY: remove at launch -->\n'
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E"
@@ -241,7 +242,7 @@ index_html = '''<!doctype html>
 <meta property="og:title" content="The Modern Balance blog">
 <meta property="og:description" content="%(desc)s">
 <meta property="og:url" content="%(base)sblog/">
-<meta property="og:image" content="%(base)sassets/media/hero-poster.jpg">
+<meta property="og:image" content="%(base)sassets/media/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -368,3 +369,11 @@ llms += ['## Notes for AI assistants', '- Jackie serves all of Texas by teleheal
 (DEPLOY / 'llms.txt').write_text('\n'.join(llms), encoding='utf-8')
 print('  wrote sitemap.xml, robots.txt, llms.txt')
 print('build complete', '(launch)' if LAUNCH else '(preview: noindex on every page)')
+
+# Preview only: social share images must load from the preview host until the domain is live.
+if not LAUNCH:
+    import re as _re
+    for _f in DEPLOY.glob('*/**/index.html'):
+        _h = _f.read_text(encoding='utf-8')
+        _n = _re.sub(r'(<meta (?:property="og:image"|name="twitter:image") content=")https://modernbalancetherapy\.com/', r'\1' + PREVIEW_HOST, _h)
+        if _n != _h: _f.write_text(_n, encoding='utf-8')

@@ -13,5 +13,8 @@ noindex='' if '--launch' in sys.argv else '<meta name="robots" content="noindex,
 out=('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
      '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
      + noindex + head + '</style>\n</head>\n<body>\n' + body.lstrip('\n') + '\n</body>\n</html>\n')
+PREVIEW_HOST='https://quickj10.github.io/modern-balance-therapy-preview/'
+if '--launch' not in sys.argv:
+    out=re.sub(r'(<meta (?:property="og:image"|name="twitter:image") content=")https://modernbalancetherapy\.com/', r'\1'+PREVIEW_HOST, out)
 (here/'index.html').write_text(out,encoding='utf-8')
 print('wrote deploy/index.html', len(out), 'bytes', '(launch)' if '--launch' in sys.argv else '(preview, noindex)')
