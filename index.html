@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Modern Balance Therapy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: soft color blocks (lavender hero, cream base, sage band), classic serif display with one italic violet word per screen, square photo frames with hairlines. Single light world by design. */
+:root{
+  --paper:#F8F5F0;
+  --paper-2:#F1EDE6;
+  --ink:#34313F;
+  --muted:#5E5A69;
+  --line:#DDD6CF;
+  --line-strong:#8C8680;
+  --lav:#CFC5E9;
+  --lav-soft:#EAE5F5;
+  --lav-hl:#E3DBF4;
+  --violet:#6B5CAB;
+  --violet-deep:#574893;
+  --sage:#5F7A64;
+  --sage-light:#8CA48D;
+  --sage-soft:#E1E8DC;
+  --white:#FFFFFF;
+  --display:"Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --body:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --radius:6px;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;font-size:1.05rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.08;letter-spacing:-0.005em;margin:0;text-wrap:balance}
+h1 em,h2 em,.pull em{font-style:italic;font-weight:500;color:var(--violet)}
+.hl{font-style:italic;color:var(--violet-deep);background:linear-gradient(transparent 55%, var(--lav-hl) 55%);padding:0 .08em}
+p{margin:0}
+a{color:inherit}
+img,svg{max-width:100%}
+strong,b{font-weight:600}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-family:var(--body);font-size:.76rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.lede{font-size:1.12rem;color:var(--muted);max-width:34em;line-height:1.7}
+section{padding-block:clamp(64px,9vw,120px)}
+.band{background:var(--paper-2)}
+.white{background:#fff}
+.skip{position:absolute;left:16px;top:-60px;z-index:50;background:var(--violet);color:#fff;padding:.8em 1.2em;border-radius:var(--radius);font-weight:600;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.ph{position:relative;background:linear-gradient(160deg,var(--lav-soft),var(--sage-soft) 70%,var(--paper-2));border:1px solid var(--line);overflow:hidden;display:grid;place-items:center;max-width:100%}
+.ph svg.leaf{width:38%;max-width:160px;color:var(--sage-light);opacity:.9}
+.ph .cap{position:absolute;left:14px;bottom:12px;right:14px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-weight:500}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;gap:.6em;font-family:var(--body);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;line-height:1;text-decoration:none;border:1px solid transparent;border-radius:var(--radius);padding:1.1em 1.6em;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .2s,color .2s,border-color .2s;will-change:transform;min-height:46px}
+.btn-primary{background:var(--violet);color:#fff}
+.btn-primary:hover{background:var(--violet-deep)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-light{background:var(--paper);color:var(--violet-deep)}
+.btn-light:hover{background:#fff}
+.btn span.lbl{display:inline-block;will-change:transform}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+.textlink{font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+
+/* header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb, #fff 92%, transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:500;font-size:1.35rem;letter-spacing:.01em;line-height:1}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.brand .stones{cursor:pointer}
+nav.main{display:flex;gap:26px;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+nav.main a{text-decoration:none;color:var(--muted)}
+nav.main a:hover{color:var(--violet)}
+.hdr-cta{white-space:nowrap}
+@media (max-width:900px){ nav.main{display:none} .hdr-cta{padding:.95em 1.2em;font-size:.7rem} }
+
+/* stones mark */
+.stones{display:block}
+.stones .s{transition:transform .5s cubic-bezier(.34,1.4,.4,1);transform-origin:50% 100%}
+.stones.wobble .s1{transform:rotate(-7deg) translateY(1px)}
+.stones.wobble .s2{transform:rotate(5deg)}
+.stones.wobble .s3{transform:rotate(-3deg) translateY(-2px)}
+.egg{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--ink);color:var(--paper);font-family:var(--display);font-style:italic;font-size:1.05rem;padding:.75em 1.3em;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;z-index:20;max-width:calc(100vw - 32px);text-align:center}
+.egg.show{opacity:1;transform:translate(-50%,0)}
+
+/* hero */
+.hero{background:var(--lav);padding-block:clamp(48px,7vw,96px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,80px);align-items:center}
+.hero .kicker{font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--violet-deep);margin-bottom:14px}
+.hero h1{font-size:clamp(2.6rem,5.8vw,4.6rem);max-width:11em}
+.hero .lede{margin-top:22px;color:var(--ink)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:34px;align-items:center}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;font-size:.8rem;font-weight:500;letter-spacing:.06em;color:var(--ink)}
+.hero .meta span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--violet);margin-right:9px;vertical-align:middle}
+.hero .ph{aspect-ratio:4/5;width:100%;max-width:440px;justify-self:end;background:linear-gradient(165deg,#FFFFFF 0%,var(--lav-soft) 55%,var(--sage-soft) 100%);border-color:rgba(255,255,255,.6)}
+.hero .ph .init{font-family:var(--display);font-size:clamp(4rem,9vw,6.5rem);font-weight:400;letter-spacing:.02em;color:var(--violet);opacity:.55}
+@media (max-width:860px){ .hero .wrap{grid-template-columns:1fr} .hero .ph{justify-self:start;max-width:360px} }
+
+/* trust strip */
+.trust{border-bottom:1px solid var(--line);padding-block:26px}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.trust .wrap>div{font-size:.9rem;line-height:1.4;display:flex;gap:12px;align-items:flex-start}
+.trust .wrap>div>div{display:block}
+.trust b{display:block;font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.trust span{color:var(--muted);font-size:.9rem}
+.trust svg{flex:none;width:22px;height:22px;color:var(--violet);margin-top:1px}
+@media (max-width:860px){ .trust .wrap{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:480px){ .trust .wrap{grid-template-columns:1fr} }
+
+/* welcome / mirror */
+.mirror .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,80px);align-items:center}
+.mirror .ph{aspect-ratio:1;width:100%;max-width:460px;background:linear-gradient(180deg,var(--lav-soft) 0%,#fff 60%,var(--sage-soft) 100%)}
+.mirror h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.mirror ol{list-style:none;margin:30px 0 0;padding:0}
+.mirror li{font-family:var(--display);font-style:italic;font-size:clamp(1.25rem,2vw,1.5rem);line-height:1.35;padding:14px 0;border-top:1px solid var(--line);color:var(--ink)}
+.mirror li:last-child{border-bottom:1px solid var(--line)}
+.mirror .after{margin-top:24px;color:var(--muted);max-width:32em}
+@media (max-width:860px){ .mirror .wrap{grid-template-columns:1fr} .mirror .ph{max-width:360px} }
+
+/* sage band */
+.meet{background:var(--sage);color:#fff;padding-block:clamp(48px,6vw,72px)}
+.meet h2{font-size:clamp(1.9rem,3.4vw,2.6rem);text-align:center;color:#fff}
+.meet h2 em{color:#fff;font-style:italic}
+.meet .dots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:40px;text-align:center}
+.meet .dot{display:grid;justify-items:center;gap:14px}
+.meet .dot i{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--sage)}
+.meet .dot i svg{width:20px;height:20px}
+.meet .dot b{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.5}
+@media (max-width:640px){ .meet .dots{grid-template-columns:1fr;gap:22px} }
+
+/* focus */
+.focus .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:start}
+.focus .ph{aspect-ratio:3/4;width:100%;max-width:440px;position:sticky;top:96px;background:linear-gradient(180deg,var(--sage-soft) 0%,#fff 50%,var(--lav-soft) 100%)}
+.focus h2{font-size:clamp(2rem,3.8vw,2.9rem);color:var(--violet-deep);margin-top:14px}
+.focus .lede{margin-top:14px}
+.focus ul{list-style:none;margin:32px 0 0;padding:0}
+.focus li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.focus li:last-child{border-bottom:1px solid var(--line)}
+.focus li h3{font-family:var(--body);font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.4}
+.focus li p{grid-column:1 / -1;color:var(--muted);font-size:.98rem;max-width:36em}
+.focus li .tag{font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);border:1px solid var(--violet);border-radius:999px;padding:.3em .7em;white-space:nowrap}
+.focus .also{margin-top:36px}
+.focus .also-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px;margin-top:14px}
+.focus .also-grid h3{font-family:var(--display);font-size:1.3rem;font-weight:500;margin-bottom:6px}
+.focus .also-grid p{color:var(--muted);font-size:.95rem}
+@media (max-width:860px){ .focus .wrap{grid-template-columns:1fr} .focus .ph{position:static;max-width:360px} .focus .also-grid{grid-template-columns:1fr} }
+
+/* steps */
+.steps{text-align:center}
+.steps h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.steps .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:52px;text-align:left}
+.steps .step{min-width:0}
+.steps .num{font-family:var(--display);font-size:3.2rem;font-weight:400;line-height:1;color:var(--violet);margin-bottom:10px}
+.steps h3{font-size:1.5rem;margin-bottom:10px}
+.steps p{color:var(--muted);font-size:.98rem}
+.steps .cta{margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.steps .cta small{color:var(--muted);font-size:.85rem}
+@media (max-width:760px){ .steps .row{grid-template-columns:1fr;gap:30px} }
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(32px,6vw,80px);align-items:start}
+.about .ph{aspect-ratio:4/5;width:100%;max-width:420px;background:linear-gradient(165deg,#fff 0%,var(--lav-soft) 60%,var(--sage-soft) 100%)}
+.about .ph .init{font-family:var(--display);font-size:clamp(4rem,9vw,6.5rem);font-weight:400;color:var(--violet);opacity:.5}
+.about h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.about .cred{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:16px}
+.about .bio{margin-top:26px;display:grid;gap:18px;max-width:38em;color:var(--ink)}
+.about .tools{margin-top:30px}
+.about .tools ul{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.about .tools li{font-size:.9rem;padding:10px 0;border-top:1px solid var(--line)}
+.about .pull{margin-top:34px;font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.8rem);line-height:1.35;max-width:26em}
+@media (max-width:860px){ .about .wrap{grid-template-columns:1fr} .about .ph{max-width:340px} }
+@media (max-width:540px){ .about .tools ul{grid-template-columns:1fr} }
+
+/* fees */
+.fees{text-align:center}
+.fees h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.fees .lede{margin-inline:auto;margin-top:14px}
+.fees .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px;text-align:left}
+.fees .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.fees .card h3{font-family:var(--body);font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.fees .card .big{font-family:var(--display);font-size:clamp(1.9rem,2.6vw,2.3rem);font-weight:500;color:var(--violet-deep)}
+.fees .card p{color:var(--muted);font-size:.96rem}
+.fees .pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.fees .pay span{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.5em .9em}
+.fees .gfe{margin:30px auto 0;font-size:.92rem;color:var(--muted);max-width:52em}
+@media (max-width:860px){ .fees .grid{grid-template-columns:1fr} }
+
+/* journals */
+.journals{padding-block:0 clamp(64px,9vw,120px)}
+.jcard{background:var(--lav-soft);border-radius:var(--radius);padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(24px,4vw,56px);align-items:end}
+.jcard h2{font-size:clamp(1.8rem,3.2vw,2.5rem);margin:12px 0 14px}
+.jcard .lede{font-size:1.02rem;color:var(--ink);opacity:.8}
+.notify{display:grid;gap:12px}
+.notify .nsent{font-size:.88rem;color:var(--violet-deep);font-weight:600}
+@media (max-width:860px){ .jcard{grid-template-columns:1fr} }
+
+/* faq */
+.faq .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px)}
+.faq h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font-family:var(--display);font-weight:500;font-size:1.35rem;line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--body);font-weight:300;font-size:1.5rem;line-height:1;color:var(--violet);transition:transform .3s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--muted);max-width:38em;font-size:.98rem}
+@media (max-width:860px){ .faq .wrap{grid-template-columns:1fr} }
+
+/* breathe */
+.breathe{background:var(--sage-soft);padding-block:clamp(48px,6vw,80px)}
+.breathe .wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(28px,5vw,64px);align-items:center}
+.breathe h2{font-size:clamp(1.8rem,3.2vw,2.5rem);margin-top:14px}
+.breathe p{color:var(--muted);margin-top:14px;max-width:30em}
+.breath{display:grid;place-items:center;position:relative;width:300px;height:300px;max-width:100%;margin-inline:auto}
+.breath .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--sage-light)}
+.breath .orb{width:46%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%, #fff 0%, var(--lav) 55%, var(--violet) 130%);box-shadow:0 24px 50px -20px rgba(107,92,171,.5);transition:transform 4s cubic-bezier(.45,.05,.55,.95);transform:scale(1)}
+.breath.in .orb,.breath.hold .orb{transform:scale(1.7)}
+.breath.out .orb{transform:scale(1);transition-duration:6s}
+.breath .halo{position:absolute;width:46%;aspect-ratio:1;border-radius:50%;border:1px solid var(--violet);opacity:.35;transition:transform 4s cubic-bezier(.45,.05,.55,.95)}
+.breath.in .halo,.breath.hold .halo{transform:scale(1.95)}
+.breath.out .halo{transform:scale(1);transition-duration:6s}
+.breath .cue{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);font-size:.78rem;letter-spacing:.08em;color:var(--muted);white-space:nowrap;text-align:center}
+.breath .cue b{display:block;font-family:var(--display);font-weight:500;font-size:1.3rem;letter-spacing:0;color:var(--ink);margin-bottom:2px}
+.breath button{position:absolute;inset:0;width:100%;height:100%;background:transparent;border:0;border-radius:50%;cursor:pointer;font:inherit;color:transparent}
+@media (max-width:760px){ .breathe .wrap{grid-template-columns:1fr} .breath{width:260px;height:260px} }
+
+/* contact / form */
+.contact .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px);align-items:start}
+.contact h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.contact .side p{color:var(--muted);margin-top:18px;max-width:30em}
+.contact .direct{margin-top:30px;display:grid;gap:12px}
+.contact .direct div{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;font-size:.95rem;min-width:0;background:var(--paper)}
+.contact .direct div span{min-width:0;overflow-wrap:anywhere}
+.contact .direct button{font:inherit;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:.55em .95em;cursor:pointer;color:var(--ink);flex:none}
+.contact .direct button:hover{border-color:var(--violet);color:var(--violet)}
+form.req{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3vw,36px);display:grid;gap:18px}
+form.req .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:540px){ form.req .two{grid-template-columns:1fr} }
+label,.field{display:grid;gap:7px;font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+label small{font-weight:400;color:var(--muted);letter-spacing:.04em;text-transform:none;font-size:.82rem}
+.chips label{display:inline;text-transform:none;letter-spacing:0}
+input[type=text],input[type=email],input[type=tel],textarea{font:inherit;font-size:1rem;font-weight:400;letter-spacing:0;color:var(--ink);background:#fff;border:1px solid var(--line-strong);border-radius:var(--radius);padding:12px 14px;width:100%;min-width:0}
+textarea{min-height:110px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;font-size:.9rem;font-weight:400;border:1px solid var(--line-strong);border-radius:999px;padding:.55em 1em;cursor:pointer;user-select:none}
+.chips input:checked + span{background:var(--lav-soft);border-color:var(--violet);color:var(--violet-deep);font-weight:500}
+.chips input:focus-visible + span{outline:2px solid var(--violet);outline-offset:2px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted)}
+.consent input{margin-top:4px;width:16px;height:16px;flex:none;accent-color:var(--violet)}
+form.req .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+form.req .foot small{color:var(--muted);font-size:.82rem}
+.sent{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(28px,4vw,44px)}
+.sent h3{font-size:1.9rem;margin-bottom:12px}
+.sent p{color:var(--muted);max-width:32em}
+.sent .ok{width:44px;height:44px;color:var(--violet);margin-bottom:16px}
+.contact.done form.req{display:none}
+.contact.done .sent{display:block}
+.err{color:#A5463F;font-size:.85rem;letter-spacing:0;text-transform:none;display:none}
+form.req.invalid .err{display:block}
+@media (max-width:860px){ .contact .wrap{grid-template-columns:1fr} }
+
+/* crisis */
+.crisis{background:var(--ink);color:var(--paper);padding-block:26px}
+.crisis .wrap{display:flex;gap:16px;align-items:flex-start;font-size:.95rem;line-height:1.5}
+.crisis svg{flex:none;width:22px;height:22px;margin-top:2px;color:var(--lav)}
+
+/* footer */
+footer.site{background:#fff;padding-block:48px 56px;font-size:.9rem;color:var(--muted)}
+footer.site .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px}
+footer.site h3{font-family:var(--body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:12px;font-weight:600}
+footer.site ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer.site a{text-decoration:none}
+footer.site a:hover{color:var(--violet)}
+footer.site .tag{font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--violet-deep);margin-top:14px}
+footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:760px){ footer.site .wrap{grid-template-columns:1fr} }
+
+/* staggered reveal: scroll-driven, resting state visible */
+@supports (animation-timeline: view()){
+  .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry var(--d,0%) entry calc(var(--d,0%) + 28%)}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{animation:none !important}
+  .btn,.stones .s,.breath .orb,.breath .halo,.faq summary::after{transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Modern Balance Therapy, home">
+      <svg class="stones" id="stones" width="30" height="30" viewBox="0 0 34 34" aria-hidden="true">
+        <ellipse class="s s1" cx="17" cy="28.5" rx="13" ry="4.5" fill="var(--sage-light)"/>
+        <ellipse class="s s2" cx="16" cy="19.5" rx="9.5" ry="4" fill="var(--lav)"/>
+        <ellipse class="s s3" cx="17.5" cy="11.5" rx="6" ry="3.4" fill="var(--violet)"/>
+      </svg>
+      <span>Modern Balance<small>Therapy</small></span>
+    </a>
+    <nav class="main" aria-label="Sections">
+      <a href="#focus">How I help</a>
+      <a href="#about">About</a>
+      <a href="#fees">Fees</a>
+      <a href="#journals">Journals</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary hdr-cta" href="#book">Book a free consult</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker reveal">Finding balance in a modern world</p>
+      <h1 class="reveal" style="--d:4%">You don't have to hold it all together <em>alone</em>.</h1>
+      <p class="lede reveal" style="--d:8%">Modern Balance Therapy is a private telehealth practice for individuals and couples across Texas. Trauma and PTSD are Jackie's specialty, alongside anxiety, depression and the big transitions of a busy modern life. Secure video sessions, evenings and weekends included.</p>
+      <div class="actions reveal" style="--d:12%">
+        <a class="btn btn-primary magnetic" href="#book"><span class="lbl">Book a free 15-minute consult</span></a>
+        <a class="textlink" href="#how">How it works</a>
+      </div>
+      <div class="meta reveal" style="--d:16%">
+        <span>Licensed Professional Counselor</span>
+        <span>10+ years in the field</span>
+        <span>Ages 12 and up</span>
+      </div>
+    </div>
+    <div class="ph reveal" style="--d:10%" aria-label="Portrait of Jackie McGreggor, photo to come">
+      <span class="init">JM</span>
+      <span class="cap">Jackie McGreggor, MA, LPC</span>
+    </div>
+  </div>
+</section>
+
+<div class="trust white">
+  <div class="wrap">
+    <div class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><b>Licensed in Texas</b><span>Jackie McGreggor, MA, LPC</span></div></div>
+    <div class="reveal" style="--d:4%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg><div><b>100% telehealth</b><span>Individuals 12 and up, and couples</span></div></div>
+    <div class="reveal" style="--d:8%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg><div><b>Trauma and PTSD specialty</b><span>TF-CBT, CBT and more</span></div></div>
+    <div class="reveal" style="--d:12%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><div><b>Private and confidential</b><span>Secure, HIPAA-compliant video</span></div></div>
+  </div>
+</div>
+
+<section class="mirror white">
+  <div class="wrap">
+    <div class="ph reveal" aria-hidden="true">
+      <svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M60 110C60 70 70 40 100 15M60 110C60 75 45 45 20 30"/><path d="M60 95c10-2 18-8 24-16M60 80c8-1 15-5 20-12M60 66c6-1 11-4 15-9M60 95c-9-1-17-6-22-13M60 80c-8-1-14-4-19-10"/></svg>
+      <span class="cap">Photo: calm, natural light</span>
+    </div>
+    <div>
+      <p class="eyebrow reveal">Welcome, I'm glad you're here</p>
+      <h2 class="reveal" style="--d:4%">Reaching out takes real <span class="hl">courage</span>, and functioning is not the same as okay.</h2>
+      <p class="after reveal" style="--d:8%">Most people who reach out are not in crisis. They are tired of carrying something alone and ready for a steadier way to live. If any of this sounds like you, you are in the right place.</p>
+      <ol>
+        <li class="reveal" style="--d:10%">"I'm getting everything done, and I'm running on empty."</li>
+        <li class="reveal" style="--d:13%">"I can't turn my brain off at night."</li>
+        <li class="reveal" style="--d:16%">"Everyone thinks I'm fine. I'm not sure I am."</li>
+        <li class="reveal" style="--d:19%">"Something happened years ago and it still runs the show."</li>
+        <li class="reveal" style="--d:22%">"We love each other. We just keep having the same fight."</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="meet">
+  <div class="wrap">
+    <h2 class="reveal">Therapy that meets you <em>where you are</em></h2>
+    <div class="dots">
+      <div class="dot reveal" style="--d:4%"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="12" r="4"/><circle cx="16" cy="12" r="4"/></svg></i><b>Individual and<br>couples therapy</b></div>
+      <div class="dot reveal" style="--d:8%"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v18M3 12h18"/></svg></i><b>Ages 12 and up,<br>teens to seniors</b></div>
+      <div class="dot reveal" style="--d:12%"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg></i><b>Virtual sessions<br>across Texas</b></div>
+    </div>
+  </div>
+</div>
+
+<section class="focus" id="focus">
+  <div class="wrap">
+    <div class="ph reveal" aria-hidden="true">
+      <svg class="leaf" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M20 100L60 20l40 80"/><path d="M35 100l25-50 25 50M48 100l12-24 12 24"/></svg>
+      <span class="cap">Photo: landscape, soft focus</span>
+    </div>
+    <div>
+      <p class="eyebrow reveal">How I can help</p>
+      <h2 class="reveal" style="--d:4%">Practical support for the things that keep you up at night.</h2>
+      <p class="lede reveal" style="--d:8%">Individual therapy for ages 12 and up, from teens to seniors, and couples counseling. Jackie's favorite work is with people in their 20s and 30s, and the door is open to anyone who needs it.</p>
+      <ul>
+        <li class="reveal"><h3>Trauma and PTSD</h3><span class="tag">Specialty</span><p>Flashbacks, hypervigilance, numbness, or a past that keeps steering the present. Trauma-focused care at a pace you set.</p></li>
+        <li class="reveal" style="--d:3%"><h3>Anxiety and overthinking</h3><p>Racing thoughts, constant what-ifs, the tight chest that shows up before anything has gone wrong.</p></li>
+        <li class="reveal" style="--d:6%"><h3>Depression and mood</h3><p>Low energy, flat days, swings you can't predict. Support for depression and mood disorders that fits real life.</p></li>
+        <li class="reveal" style="--d:9%"><h3>Couples and pre-marital</h3><p>Communication, trust, the same argument on repeat. Also for couples who want a strong start before the wedding.</p></li>
+        <li class="reveal" style="--d:12%"><h3>Life transitions</h3><p>New city, new role, new relationship, new loss. Change you chose and change you didn't.</p></li>
+        <li class="reveal" style="--d:15%"><h3>Grief, loss and family</h3><p>Loss of a person, a plan, a version of yourself. Family strain that nobody at the table knows how to name.</p></li>
+      </ul>
+      <div class="also reveal">
+        <p class="eyebrow">Also available</p>
+        <div class="also-grid">
+          <div><h3>Behavioral plans and autism support</h3><p>For parents navigating behavioral challenges at home, including children on the autism spectrum. Practical, individualized strategies.</p></div>
+          <div><h3>Parent coaching</h3><p>Stronger relationships with your kids, healthier boundaries, fewer standoffs. Guidance for the hard seasons of parenting.</p></div>
+          <div><h3>Life coaching</h3><p>Goal-focused sessions for adults who want clarity, confidence and a concrete next step, without a clinical frame.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps white" id="how">
+  <div class="wrap">
+    <p class="eyebrow reveal">How it works</p>
+    <h2 class="reveal" style="--d:4%">Three steps from <em>maybe</em> to your first session.</h2>
+    <div class="row">
+      <div class="step reveal"><div class="num">01.</div><h3>Request a consult</h3><p>Fill out the short form below. It takes about two minutes and asks nothing you'd rather not put in writing.</p></div>
+      <div class="step reveal" style="--d:5%"><div class="num">02.</div><h3>Talk for 15 minutes, free</h3><p>A quick video or phone call to hear what's going on, answer your questions and see if we're a good fit. No pressure either way.</p></div>
+      <div class="step reveal" style="--d:10%"><div class="num">03.</div><h3>Start online sessions</h3><p>Individual or couples sessions by video from wherever you are in Texas, weekly or every other week. Evening and weekend times are available.</p></div>
+    </div>
+    <div class="cta reveal" style="--d:12%">
+      <a class="btn btn-primary" href="#book"><span class="lbl">Request your free consult</span></a>
+      <small>Most requests get a reply within one business day.</small>
+    </div>
+  </div>
+</section>
+
+<section class="about band" id="about">
+  <div class="wrap">
+    <div class="ph reveal" aria-label="Portrait of Jackie McGreggor, photo to come">
+      <span class="init">JM</span>
+      <span class="cap">Jackie McGreggor, MA, LPC</span>
+    </div>
+    <div>
+      <p class="eyebrow reveal">About Jackie</p>
+      <h2 class="reveal" style="--d:4%">Hi, I'm Jackie. A steady, down-to-earth therapist for a <em>very fast</em> world.</h2>
+      <p class="cred reveal" style="--d:7%">Licensed Professional Counselor · Over a decade in the field</p>
+      <div class="bio">
+        <p class="reveal" style="--d:10%">Jackie McGreggor is a Licensed Professional Counselor in Texas and the founder of Modern Balance Therapy. Over more than ten years she has worked in private practice, counseling centers, correctional facilities and community programs, with people from every walk of life.</p>
+        <p class="reveal" style="--d:13%">She built the practice around a simple observation: the modern world asks a lot of people, and most of us were never taught how to put any of it down. Her approach is eclectic and evidence-based, shaped to each person rather than the other way around, with practical tools you can use between sessions.</p>
+        <p class="reveal" style="--d:16%">Expect a safe, nonjudgmental space, real conversation, and someone who will walk alongside you rather than talk at you.</p>
+      </div>
+      <div class="tools reveal" style="--d:18%">
+        <p class="eyebrow">Approaches Jackie draws on</p>
+        <ul>
+          <li>Trauma-Focused CBT</li><li>Cognitive Behavioral Therapy</li><li>Psychodynamic Therapy</li><li>Solution-Focused Brief Therapy</li><li>Person-Centered Therapy</li><li>Family Systems Therapy</li>
+        </ul>
+      </div>
+      <p class="pull reveal" style="--d:20%">"My goal is to walk alongside you with care and guidance as you move toward balance, strength, and <em>renewed hope</em>."</p>
+    </div>
+  </div>
+</section>
+
+<section class="fees white" id="fees">
+  <div class="wrap">
+    <p class="eyebrow reveal">Fees and payment</p>
+    <h2 class="reveal" style="--d:4%">Clear pricing, no insurance paperwork.</h2>
+    <p class="lede reveal" style="--d:8%">Modern Balance Therapy is a private-pay practice. No insurance claims, no diagnosis on file with a third party, no surprises. All sessions are by secure video.</p>
+    <div class="grid">
+      <div class="card reveal"><h3>Individual sessions</h3><div class="big">$150 to $175</div><p>50 minutes, ages 12 and up. Weekly or every other week. Evening and weekend times available.</p></div>
+      <div class="card reveal" style="--d:5%"><h3>Couples sessions</h3><div class="big">$200</div><p>60 to 80 minutes, for couples at any stage, including pre-marital counseling. Both partners join from wherever they are.</p></div>
+      <div class="card reveal" style="--d:10%"><h3>Sliding scale</h3><div class="big">Ask at your consult</div><p>A limited number of reduced-fee spots are held for people with financial need. Bring it up on the call and we will talk it through together.</p><div class="pay"><span>PayPal</span><span>Venmo</span><span>Cash App</span></div></div>
+    </div>
+    <p class="gfe reveal" style="--d:12%">Under the federal No Surprises Act, you have the right to a Good Faith Estimate of what your care is expected to cost. You will receive one in writing before your first session, and any time you ask.</p>
+  </div>
+</section>
+
+<section class="journals" id="journals">
+  <div class="wrap">
+    <div class="jcard reveal">
+      <div>
+        <p class="eyebrow">Journals by Jackie · Coming soon</p>
+        <h2>Guided mental health journals, written by <em>your</em> therapist.</h2>
+        <p class="lede">Jackie is finishing a series of guided journals built on the same tools she uses in session. Printed and shipped straight to your door. Leave your email and you will be the first to know when the shop opens.</p>
+      </div>
+      <form class="notify" id="notifyForm" novalidate>
+        <label>Email<input type="email" id="n-email" name="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <button class="btn btn-primary" type="submit"><span class="lbl">Tell me when they're ready</span></button>
+        <p class="nsent" id="nsent" hidden>You're on the list. Thank you.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="faq white" id="faq">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow reveal">Questions</p>
+      <h2 class="reveal" style="--d:4%">The things people usually want to know first.</h2>
+    </div>
+    <div class="reveal" style="--d:6%">
+      <details><summary>Does online therapy actually work?</summary><p>For the kinds of concerns this practice focuses on, yes. Video sessions let you talk from a place you already feel comfortable, and people tend to skip fewer sessions when there is no commute. All you need is a private spot, decent wifi and headphones.</p></details>
+      <details><summary>Where do I need to be during sessions?</summary><p>Physically in Texas. Licensing rules follow the client's location, not the therapist's. Anywhere in the state works.</p></details>
+      <details><summary>Is it confidential?</summary><p>Yes. Sessions run on a secure, HIPAA-compliant video platform and your records stay within the practice. The few legal limits to confidentiality, like imminent risk of harm, are explained plainly in your intake paperwork before we begin.</p></details>
+      <details><summary>Why don't you take insurance?</summary><p>Insurance requires a mental health diagnosis on your permanent record and often limits how many sessions you can have. Private pay keeps those decisions between you and your therapist. If your plan has out-of-network benefits, a superbill can be provided for you to submit. If cost is a barrier, ask about the sliding scale at your consult.</p></details>
+      <details><summary>Do you see teenagers?</summary><p>Yes, ages 12 and up, by video, with a parent or guardian's consent. Teens get the same confidential space as adults, and Jackie will explain to both of you what stays private and what does not.</p></details>
+      <details><summary>Do you offer Christian-based counseling?</summary><p>Yes, on request. If your faith is part of how you make sense of life, it can be part of your therapy. If it isn't, it never comes up. You decide.</p></details>
+      <details><summary>What happens in the first session?</summary><p>Mostly talking. You share what brought you in, at whatever depth feels right, and Jackie asks questions to understand the full picture. By the end you will have a sense of what working together could look like.</p></details>
+      <details><summary>What if we're not the right fit?</summary><p>That is part of what the free consult is for. If it turns out another kind of support would serve you better, Jackie will say so and point you toward it.</p></details>
+      <details><summary>How do I reschedule or cancel?</summary><p>Let Jackie know at least 24 hours ahead and there is no charge. Later than that, the session fee applies, with exceptions for emergencies.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="breathe">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow reveal">A moment before you decide</p>
+      <h2 class="reveal" style="--d:4%">Take one slow breath with us.</h2>
+      <p class="reveal" style="--d:8%">In for four, hold for four, out for six. Three rounds. It is the smallest version of what sessions feel like: a little more room than you had a minute ago.</p>
+    </div>
+    <div class="breath reveal" id="breath" style="--d:6%">
+      <div class="ring"></div>
+      <div class="halo"></div>
+      <div class="orb"></div>
+      <div class="cue" id="cue" aria-live="polite"><b>Take a breath</b>tap to begin</div>
+      <button type="button" id="breathBtn" aria-label="Start a guided breath">Start a guided breath</button>
+    </div>
+  </div>
+</div>
+
+<section class="contact white" id="book">
+  <div class="wrap">
+    <div class="side">
+      <p class="eyebrow reveal">Book a free consult</p>
+      <h2 class="reveal" style="--d:4%">Tell Jackie a little about what's going on.</h2>
+      <p class="reveal" style="--d:8%">Two minutes, no commitment. You will hear back within one business day to set up your free 15-minute consult.</p>
+      <div class="direct reveal" style="--d:10%">
+        <div><span>jackie@modernbalancetherapy.com</span><button type="button" data-copy="jackie@modernbalancetherapy.com">Copy</button></div>
+        <div><span>832.960.3272</span><button type="button" data-copy="8329603272">Copy</button></div>
+      </div>
+    </div>
+    <div class="reveal" style="--d:8%">
+      <form class="req" id="reqForm" novalidate>
+        <div class="two">
+          <label>Name<input type="text" id="f-name" name="name" autocomplete="name" required></label>
+          <label>Email<input type="email" id="f-email" name="email" autocomplete="email" required></label>
+        </div>
+        <label>Phone <small>(optional)</small><input type="tel" id="f-phone" name="phone" autocomplete="tel"></label>
+        <div class="field"><span class="flabel">I'm looking for</span>
+          <div class="chips">
+            <label><input type="radio" id="k-ind" name="kind" value="Individual" checked><span>Individual therapy</span></label>
+            <label><input type="radio" id="k-cpl" name="kind" value="Couples"><span>Couples counseling</span></label>
+            <label><input type="radio" id="k-teen" name="kind" value="Teen"><span>For my teen</span></label>
+            <label><input type="radio" id="k-parent" name="kind" value="Parent coaching"><span>Parent support</span></label>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">When are you usually free?</span>
+          <div class="chips">
+            <label><input type="checkbox" id="t-mid" name="times" value="Midday"><span>Midday</span></label>
+            <label><input type="checkbox" id="t-aft" name="times" value="Afternoons"><span>Afternoons</span></label>
+            <label><input type="checkbox" id="t-eve" name="times" value="Evenings"><span>Evenings</span></label>
+            <label><input type="checkbox" id="t-wknd" name="times" value="Weekends"><span>Weekends</span></label>
+          </div>
+        </div>
+        <label>What's bringing you in? <small>(optional, a sentence is plenty)</small><textarea id="f-msg" name="message" placeholder="Keep it brief. You'll have time to say more on the call."></textarea></label>
+        <label class="consent"><input type="checkbox" id="f-consent" name="consent" required><span>I understand this form is not monitored for emergencies and I'll use 988 or 911 if I need immediate help.</span></label>
+        <p class="err" id="formErr" aria-live="polite">Please add your name and email, and tick the box above.</p>
+        <div class="foot">
+          <button class="btn btn-primary magnetic" type="submit"><span class="lbl">Request my free consult</span></button>
+          <small>Your details stay within the practice.</small>
+        </div>
+      </form>
+      <div class="sent" role="status">
+        <svg class="ok" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="19"/><path d="M14 23l5 5 11-12"/></svg>
+        <h3>Request received.</h3>
+        <p>Thank you, <span id="sentName">friend</span>. Jackie will reply within one business day to find a time for your free consult. In the meantime, the breathing circle above is yours whenever you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<aside class="crisis" aria-label="Crisis resources">
+  <div class="wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+    <p><b>If you are in crisis or thinking about harming yourself,</b> call or text <b>988</b> (Suicide and Crisis Lifeline) any time, or call 911. This website and its form are not monitored around the clock.</p>
+  </div>
+</aside>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <h3>Modern Balance Therapy</h3>
+      <p>Private online therapy for individuals and couples across Texas.</p>
+      <p class="tag">Finding balance in a modern world.</p>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <ul><li><a href="#focus">How I help</a></li><li><a href="#how">How it works</a></li><li><a href="#about">About Jackie</a></li><li><a href="#fees">Fees and payment</a></li><li><a href="#journals">Journals</a></li><li><a href="#faq">Questions</a></li><li><a href="#book">Book a free consult</a></li></ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul><li>jackie@modernbalancetherapy.com</li><li>832.960.3272</li><li>Sessions by secure video, Texas only</li></ul>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© <span id="yr">2026</span> Modern Balance Therapy · Jackie McGreggor, MA, LPC · Licensed by the Texas Behavioral Health Executive Council</span>
+    <span>Privacy practices · Good Faith Estimate</span>
+  </div>
+</footer>
+<div class="egg" id="egg" aria-hidden="true">Balance is something you practice, not somewhere you arrive.</div>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=window.matchMedia('(pointer: fine)').matches;
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  /* magnetic buttons, desktop pointer only, gentle */
+  if(fine && !reduce){
+    document.querySelectorAll('.magnetic').forEach(function(btn){
+      var lbl=btn.querySelector('.lbl'); var rad=null;
+      function onMove(e){ var r=btn.getBoundingClientRect(); var cx=r.left+r.width/2, cy=r.top+r.height/2; var dx=e.clientX-cx, dy=e.clientY-cy; rad=rad||Math.max(r.width,r.height)*0.75; var d=Math.hypot(dx,dy); if(d<rad){ btn.style.transform='translate('+(dx*0.22)+'px,'+(dy*0.22)+'px)'; if(lbl) lbl.style.transform='translate('+(dx*0.1)+'px,'+(dy*0.1)+'px)'; } else { reset(); } }
+      function reset(){ btn.style.transform=''; if(lbl) lbl.style.transform=''; }
+      var parent=btn.parentElement; parent.addEventListener('mousemove',onMove); parent.addEventListener('mouseleave',reset);
+    });
+  }
+
+  /* breath: 4 in, 4 hold, 6 out, three rounds */
+  var b=document.getElementById('breath'), cue=document.getElementById('cue'), bb=document.getElementById('breathBtn'), running=false, timers=[];
+  function setCue(big,small){ cue.innerHTML='<b></b>'; cue.firstChild.textContent=big; cue.appendChild(document.createTextNode(small)); }
+  function phase(cls,big,small,ms,next){ b.classList.remove('in','hold','out'); b.classList.add(cls); setCue(big,small); timers.push(setTimeout(next,ms)); }
+  function cycle(n){ if(!running) return; if(n>=3){ stop(true); return; } phase('in','Breathe in','through your nose',4000,function(){ phase('hold','Hold','softly',4000,function(){ phase('out','Breathe out','slow, through your mouth',6000,function(){ cycle(n+1); }); }); }); }
+  function stop(done){ running=false; timers.forEach(clearTimeout); timers=[]; b.classList.remove('in','hold','out'); setCue(done?'Nice.':'Take a breath', done?'tap to go again':'tap to begin'); bb.setAttribute('aria-label','Start a guided breath'); }
+  bb.addEventListener('click',function(){ if(running){ stop(false); return; } if(reduce){ setCue('In 4, hold 4, out 6','three rounds, at your pace'); return; } running=true; bb.setAttribute('aria-label','Stop the guided breath'); cycle(0); });
+
+  /* easter egg: tap the stones */
+  var st=document.getElementById('stones'), egg=document.getElementById('egg'), eggT;
+  st.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); st.classList.add('wobble'); setTimeout(function(){st.classList.remove('wobble');},700); egg.classList.add('show'); clearTimeout(eggT); eggT=setTimeout(function(){egg.classList.remove('show');},3200); });
+
+  /* copy buttons */
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){ var v=btn.getAttribute('data-copy'); var done=function(){ var o=btn.textContent; btn.textContent='Copied'; setTimeout(function(){btn.textContent=o;},1400); };
+      function sel(bt){ var span=bt.previousElementSibling; var r=document.createRange(); r.selectNodeContents(span); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(v).then(done,function(){ sel(btn); }); } else { sel(btn); }
+    });
+  });
+
+  /* journals notify: handled in page */
+  var nf=document.getElementById('notifyForm');
+  nf.addEventListener('submit',function(e){ e.preventDefault(); var v=document.getElementById('n-email').value.trim(); if(!/.+@.+\..+/.test(v)) return; document.getElementById('nsent').hidden=false; nf.querySelector('button').disabled=true; });
+
+  /* consult form: handled in page */
+  var form=document.getElementById('reqForm'), wrap=document.querySelector('.contact');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('f-name').value.trim(), email=document.getElementById('f-email').value.trim(), ok=document.getElementById('f-consent').checked;
+    var valid=name && /.+@.+\..+/.test(email) && ok;
+    if(!valid){ form.classList.add('invalid'); return; }
+    form.classList.remove('invalid');
+    document.getElementById('sentName').textContent=name.split(' ')[0];
+    wrap.classList.add('done');
+    wrap.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'});
+  });
+})();
+</script>
+
+</body>
+</html>
