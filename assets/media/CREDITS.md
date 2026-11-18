@@ -2,7 +2,7 @@
 
 Every shipped item is licensed for free commercial use without attribution (CC0 / Public Domain via the WordPress Photo Directory and Wikimedia Commons, Mixkit License for video). Credits are recorded anyway. Ally's reference images (design-references/modern-balance-therapy/round2) were NOT used anywhere. Earlier rawpixel candidates were dropped because their free previews are watermarked.
 
-Grading toward the site palette (noted per the brief): photos get saturation reduced about 16 percent, blacks lifted about 5 percent, a touch of warmth (blue channel slightly lower). The band image is graded harder (saturation about 25 percent lower, blacks lifted 7 percent) to pull a pink dandelion macro toward peach and cream. The hero video was graded in ffmpeg (eq saturation 0.8, brightness +0.03, contrast 0.96, curves lift) and loop-crossfaded over 0.6 s.
+Grading toward the site palette (noted per the brief): photos get saturation reduced about 16 percent, blacks lifted about 5 percent, a touch of warmth (blue channel slightly lower). The band image is graded harder (saturation about 25 percent lower, blacks lifted 7 percent) to pull a pink dandelion macro toward peach and cream; on Nov 18 the band was re-graded with a hue shift of about minus 65 degrees so the pink reads as lavender, per Ally. The hero video was graded in ffmpeg (eq saturation 0.8, brightness +0.03, contrast 0.96, curves lift) and loop-crossfaded over 0.6 s.
 
 ## Hero video
 
@@ -19,9 +19,9 @@ Grading toward the site palette (noted per the brief): photos get saturation red
 | frame-stones.webp and frame-stones-800.webp | Focus section frame | https://wordpress.org/photos/photo/61865c314c/ | Manjit — The AF Themes Support Team | CC0 (wordpress) | 1536x2048 |
 | frame-grass.webp and frame-grass-800.webp | Mirror section frame | https://wordpress.org/photos/photo/370670ac14/ | Mohammed Jamsheed KM | CC0 (wordpress) | 2048x1365 |
 | band-mist.webp and band-mist-800.webp | Full-bleed band | https://wordpress.org/photos/photo/23761e9afb/ | AlfieGrand | CC0 (wordpress) | 2048x1361 |
-| thumb-need-therapy.webp and thumb-need-therapy-800.webp | Blog: need therapy | https://wordpress.org/photos/photo/3056942a5b/ | Drashti Soni | CC0 (wordpress) | 1536x2048 |
+| thumb-need-therapy.webp and thumb-need-therapy-800.webp | Blog: need therapy (rocks on a sandy beach, swapped Nov 18 per Ally) | https://wordpress.org/photos/photo/3166763b9b/ | SadikAli | CC0 (wordpress) | 1536x2048 |
 | thumb-affordable.webp and thumb-affordable-800.webp | Blog: affordable therapy | https://wordpress.org/photos/photo/62869d21e6/ | Tawhid Sadman | CC0 (wordpress) | 2048x1536 |
-| thumb-first-session.webp and thumb-first-session-800.webp | Blog: first session | https://wordpress.org/photos/photo/454692efd4/ | Tawhid Sadman | CC0 (wordpress) | 2048x1536 |
+| thumb-first-session.webp and thumb-first-session-800.webp | Blog: first session (river cairn, swapped Nov 18 per Ally) | https://wordpress.org/photos/photo/45765c64a8/ | Vishnu Chandra | CC0 (wordpress) | 2048x1536 |
 | thumb-online.webp and thumb-online-800.webp | Blog: online therapy | https://wordpress.org/photos/photo/81668ea316/ | Bigul Malayi | CC0 (wordpress) | 2048x2048 |
 | thumb-trauma.webp and thumb-trauma-800.webp | Blog: trauma | https://wordpress.org/photos/photo/3166763b9b/ | SadikAli | CC0 (wordpress) | 2048x1536 |
 | thumb-anxiety.webp and thumb-anxiety-800.webp | Blog: stress vs anxiety | https://wordpress.org/photos/photo/5736a10966/ | Sakin Shrestha | CC0 (wordpress) | 2048x1536 |
