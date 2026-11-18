@@ -30,3 +30,10 @@ python3 -I blog/check.py         # H1 / title / description / JSON-LD / links / 
 6. Create the Google Business Profile (service-area business, no address shown) and a Psychology Today profile, both linking to the site; add their URLs to `sameAs` on `#practice`.
 7. Add Privacy Practices and Good Faith Estimate pages (footer currently shows them as plain text).
 8. Re-run `check.py` with network on so every reference URL is confirmed live.
+
+## v19 (Nov 18): earth/wine restyle
+- Tokens live in site/index.html :root and propagate to every page through build.py (shared CSS block). Legacy names (--violet, --lav, --sage...) are aliases to the new palette so older rules follow.
+- Fonts: Jost 300/400/500 + Fraunces italic (accent only). Google Fonts link appears in site/index.html, _template.html, _referral.html, _legal.html and the blog index string inside build.py; change all five together.
+- Pattern: assets/petals.svg (hand-drawn seamless 720px tile, slate petals on cream) is used only by the mirror section.
+- Pending images, do NOT generate without Ally's approval: three "cozy conversation" alternates for the mirror snapshot slot (two people talking on a sofa in warm light, hands around mugs across a table, a person listening from behind). Current slot uses CC0 hands with salvia.
+- Blog thumbnails were not re-shot this round; they still carry the round-2 grade. Re-grade with the round-3 curve if they read cool.

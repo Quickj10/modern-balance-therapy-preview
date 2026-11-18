@@ -44,3 +44,18 @@ Grading toward the site palette (noted per the brief): photos get saturation red
 
 ## Swapping a pick
 Put the new source file in assets/media/_raw, change the key in the plan inside assets/media/process.py (copy of the processing script), run it, then `python3 -I deploy/wrap_home.py` and `python3 -I deploy/blog/build.py`. Sizes: frames 1600 px wide, thumbnails 1200 px plus 800 px card versions, all WebP quality 80.
+
+## Round 3 (Nov 18, earth/wine restyle)
+
+| File | Used for | Source page | Creator | License |
+|---|---|---|---|---|
+| frame-hands.webp | Mirror section tilted photo | https://wordpress.org/photos/photo/57367ca6d7/ | WordPress Photo Directory contributor (see page) | CC0 |
+| frame-ripples.webp | Focus section blob frame | https://wordpress.org/photos/photo/6706a994f1/ | see page | CC0 |
+| band-light.webp | Full-bleed band (plant shadow on cream wall) | https://wordpress.org/photos/photo/24168f4752/ | see page | CC0 |
+| mosaic-grass.webp | Mosaic tile (backlit grass, 4:5 crop of the earlier frame-grass source) | https://wordpress.org/photos/photo/370670ac14/ | Mohammed Jamsheed KM | CC0 |
+| (dropped) 47167a9e19 walking pair | too urban once cropped, kept in _raw only | https://wordpress.org/photos/photo/47167a9e19/ | see page | CC0 |
+| mosaic-lake.webp | Mosaic tile (lake ripples) | https://wordpress.org/photos/photo/8636ad268e/ | see page | CC0 |
+| frame-hands-alt.webp | alternate, not shipped | https://wordpress.org/photos/photo/5006a0837c/ | see page | CC0 |
+
+Grade: saturation 0.8, warm lift (R +10, G +8, B +4, blue ceiling 246). Hero video re-graded warmer (eq saturation 0.72, gamma_r 1.03, gamma_b 0.97).
+Retired this round: frame-grass, frame-stones, band-mist (kept on disk for the contact sheet).
