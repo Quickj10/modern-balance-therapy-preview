@@ -283,6 +283,36 @@ footer.site .tag{font-family:var(--display);font-style:italic;font-size:1.35rem;
 footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:760px){ footer.site .wrap{grid-template-columns:1fr} }
 
+/* stacking stones: resting state is the finished stack, .play runs the drop sequence */
+.stack{text-align:center;padding-block:clamp(56px,8vw,104px)}
+.stack .wrap{max-width:720px}
+.stack .pile{display:inline-block;width:190px;height:190px;cursor:pointer;border-radius:50%;transform-origin:50% 100%}
+.stack .pile:focus-visible{outline:2px solid var(--violet);outline-offset:8px}
+.stack .pile svg{display:block;width:100%;height:100%;overflow:visible}
+.stack .pile .s{transform-box:fill-box;transform-origin:50% 100%}
+.stack .eyebrow{margin-top:24px}
+.stack h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.stack .sub{margin-top:14px;color:var(--muted)}
+.stack.play .s1{animation:drop 1s both 0s}
+.stack.play .s2{animation:drop 1s both .6s}
+.stack.play .s3{animation:drop 1s both 1.2s}
+.stack.play .pile{animation:wiggle .9s ease-in-out both 1.95s}
+.stack.play .t1{animation:tin .6s ease-out both 2.4s}
+.stack.play .t2{animation:tin .6s ease-out both 2.52s}
+.stack.play .t3{animation:tin .6s ease-out both 2.64s}
+@keyframes drop{
+  0%{transform:translateY(-220px) rotate(-7deg);opacity:0;animation-timing-function:cubic-bezier(.55,0,1,.45)}
+  12%{opacity:1}
+  70%{transform:translateY(0) rotate(0) scale(1,1);animation-timing-function:ease-out}
+  80%{transform:translateY(0) scale(1.06,.94);animation-timing-function:ease-in-out}
+  92%{transform:translateY(0) scale(.99,1.02)}
+  100%{transform:none}
+}
+@keyframes wiggle{0%{transform:rotate(0)} 25%{transform:rotate(3deg)} 50%{transform:rotate(-2.5deg)} 72%{transform:rotate(1.5deg)} 88%{transform:rotate(-.5deg)} 100%{transform:rotate(0)}}
+@keyframes tin{from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none}}
+@media (max-width:860px){ .stack .pile{width:136px;height:136px} }
+@media (prefers-reduced-motion: reduce){ .stack.play .s,.stack.play .pile,.stack.play .t1,.stack.play .t2,.stack.play .t3{animation:none !important} }
+
 /* staggered reveal: scroll-driven, resting state visible */
 @supports (animation-timeline: view()){
   .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry var(--d,0%) entry calc(var(--d,0%) + 28%)}
@@ -322,9 +352,9 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="kicker reveal">Finding balance in a modern world</p>
+      <p class="kicker reveal">Private telehealth therapy across Texas</p>
       <h1 class="reveal" style="--d:4%">You don't have to hold it all together <em>alone</em>.</h1>
-      <p class="lede reveal" style="--d:8%">Modern Balance Therapy is a private telehealth practice for individuals and couples across Texas. Trauma and PTSD are Jackie's specialty, alongside anxiety, depression and the big transitions of a busy modern life. Secure video sessions, evenings and weekends included.</p>
+      <p class="lede reveal" style="--d:8%">Modern Balance Therapy is a private practice for individuals and couples. Trauma and PTSD are Jackie's specialty, alongside anxiety, depression and the big transitions of a busy modern life. Secure video sessions, evenings and weekends included.</p>
       <div class="actions reveal" style="--d:12%">
         <a class="btn btn-primary magnetic" href="#book"><span class="lbl">Book a free 15-minute consult</span></a>
         <a class="textlink" href="#how">How it works</a>
@@ -369,6 +399,21 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
         <li class="reveal" style="--d:22%">"We love each other. We just keep having the same fight."</li>
       </ol>
     </div>
+  </div>
+</section>
+
+<section class="stack band" id="balance" aria-label="Finding balance">
+  <div class="wrap">
+    <div class="pile" id="pile" role="button" tabindex="0" aria-label="Replay the stacking animation">
+      <svg viewBox="0 0 34 34" aria-hidden="true">
+        <ellipse class="s s1" cx="17" cy="28.5" rx="13" ry="4.5" fill="var(--sage-light)"/>
+        <ellipse class="s s2" cx="16" cy="19.5" rx="9.5" ry="4" fill="var(--lav)"/>
+        <ellipse class="s s3" cx="17.5" cy="11.5" rx="6" ry="3.4" fill="var(--violet)"/>
+      </svg>
+    </div>
+    <p class="eyebrow t1">Modern Balance Therapy</p>
+    <h2 class="t2">Finding <em>balance</em> in a modern world.</h2>
+    <p class="sub t3">The idea behind the name, and the aim of every session.</p>
   </div>
 </section>
 
@@ -632,6 +677,13 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
   /* easter egg: tap the stones */
   var st=document.getElementById('stones'), egg=document.getElementById('egg'), eggT;
   st.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); st.classList.add('wobble'); setTimeout(function(){st.classList.remove('wobble');},700); egg.classList.add('show'); clearTimeout(eggT); eggT=setTimeout(function(){egg.classList.remove('show');},3200); });
+
+  /* stacking stones: play once at 40% in view, replay on tap or Enter/Space */
+  var sk=document.getElementById('balance'), pile=document.getElementById('pile');
+  function playStack(){ if(reduce) return; sk.classList.remove('play'); void sk.offsetWidth; sk.classList.add('play'); }
+  if('IntersectionObserver' in window && !reduce){ var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ playStack(); io.disconnect(); } }); },{threshold:.4}); io.observe(sk); }
+  pile.addEventListener('click',playStack);
+  pile.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); playStack(); } });
 
   /* copy buttons */
   document.querySelectorAll('[data-copy]').forEach(function(btn){
