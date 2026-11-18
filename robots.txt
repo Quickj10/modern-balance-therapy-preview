@@ -1,0 +1,22 @@
+# Modern Balance Therapy
+# During the preview build every page carries an in-page noindex meta tag; this file
+# stays permissive so launch only needs the in-page tags removed (build.py --launch).
+User-agent: *
+Allow: /
+Disallow: /blog/_src/
+
+# AI search and answer engines are welcome to read and cite this site.
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://modernbalancetherapy.com/sitemap.xml
