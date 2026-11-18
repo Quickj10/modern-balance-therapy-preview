@@ -30,8 +30,8 @@
 /* Layout v5: antique cream page, muted mauve as the brand color, dark plum for weight, EB Garamond headlines with one italic word, Manrope for everything else, paper texture on chosen sections only, gradients elsewhere. Single light world by design. */
 :root{
   /* palette: antique cream, soft sage, dusty slate, olive, muted mauve, plum (sampled from the Rooted Within band) */
-  --paper:#EDE8DA;
-  --paper-2:#E4DFD2;
+  --paper:#F4EFE5;
+  --paper-2:#ECE6D9;
   --ink:#2E2630;
   --muted:#5A4E55;
   --line:#D6D0C2;
@@ -181,7 +181,8 @@ nav.main,.textlink,.trust b,footer.site h3,.brand small,label,.field{font-weight
 .hero h1{font-size:clamp(2.6rem,5.2vw,4.4rem);max-width:11em;color:var(--plum)}
 .hero .lede{margin-top:22px;color:var(--ink)}
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:34px;align-items:center}
-.hero .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;font-size:.8rem;font-weight:600;letter-spacing:.06em;color:var(--ink)}
+.hero .meta{display:flex;flex-wrap:nowrap;white-space:nowrap;gap:8px 20px;margin-top:30px;font-size:.8rem;font-weight:600;letter-spacing:.06em;color:var(--ink)}
+@media (max-width:600px){ .hero .meta{flex-wrap:wrap;white-space:normal} }
 .hero .meta span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--mauve);margin-right:9px;vertical-align:middle}
 @media (max-width:860px){
   .hero{min-height:0;padding-block:0 56px}
@@ -319,7 +320,7 @@ details.more>.panel{display:grid;gap:14px;max-width:38em;color:var(--ink)}
 @media (max-width:860px){ .about .wrap{grid-template-columns:1fr} .about .photo{max-width:320px;transform:rotate(-1deg)} }
 
 /* fees */
-.fees{text-align:center}
+.fees{text-align:center;background:#fff}
 .fees h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
 .fees .lede{margin-inline:auto;margin-top:14px}
 .fees .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px;text-align:left}
@@ -327,6 +328,12 @@ details.more>.panel{display:grid;gap:14px;max-width:38em;color:var(--ink)}
 .fees .card h3{font-family:var(--body);font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .fees .card .big{font-family:var(--display);font-size:clamp(1.9rem,2.6vw,2.3rem);font-weight:400;color:var(--plum)}
 .fees .card p{color:var(--muted);font-size:.96rem}
+.fees .card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.fees .card:hover,.fees .card:focus-within{transform:translateY(-4px);box-shadow:0 2px 4px rgba(46,38,48,.06),0 18px 36px -14px rgba(46,38,48,.24),0 36px 60px -32px rgba(46,38,48,.2);border-top-color:var(--plum)}
+.fees .card .go{margin-top:auto;padding-top:14px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mauve-deep);text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.fees .card .go::after{content:"\2192";transition:transform .25s ease}
+.fees .card:hover .go::after,.fees .card .go:focus-visible::after{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){ .fees .card,.fees .card .go::after{transition:none} .fees .card:hover{transform:none} }
 .fees .pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .fees .pay span{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.5em .9em}
 .fees .gfe{margin:34px auto 0;max-width:52em;text-align:left;display:inline-block}
@@ -342,8 +349,8 @@ details.more>.panel{display:grid;gap:14px;max-width:38em;color:var(--ink)}
 .posts .list li:last-child{border-bottom:1px solid var(--line)}
 .posts .list a{display:grid;grid-template-columns:84px 1fr;gap:18px;align-items:center;padding:16px 0;text-decoration:none;color:var(--ink);transition:color .2s}
 .posts .list a:hover h3{color:var(--mauve-deep)}
-.posts .list svg.press{width:84px;height:84px;display:block;fill:none;stroke:#EFEAE0;stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round;overflow:visible;transition:transform .35s ease}
-.posts .list a:hover svg.press{transform:translateY(-1px)}
+.posts .list img.press{width:84px;height:84px;display:block;transition:transform .35s ease}
+.posts .list a:hover img.press{transform:translateY(-1px)}
 .posts .list .eyebrow{color:var(--muted);font-size:.68rem}
 .posts .list h3{font-size:1.25rem;line-height:1.25;margin-top:4px;transition:color .2s}
 .posts .all{margin-top:28px;display:inline-block}
@@ -549,10 +556,13 @@ html.js-roll .roll{display:block}
 .start{background:linear-gradient(120deg,#CDD6C5 0%,#C9D2DE 38%,#E3D3DB 70%,#FFFFFF 100%)}
 .start .way .badge{background:var(--olive);border-color:var(--olive)}
 .start .way .badge svg{color:#fff}
-.start .way .val{background:#fff;border:1px solid var(--olive)}
+.start .way .val{background:#fff;border:0;padding:0;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:12px;font-size:1rem}
 .start .way .val button{background:var(--olive-deep);border-color:var(--olive-deep);color:#fff}
 .start .way .val button:hover{background:#3F4935;border-color:#3F4935;color:#fff}
 .start .eyebrow{color:var(--olive-deep)}
+.start .ways{grid-template-rows:auto auto auto auto}
+@supports (grid-template-rows:subgrid){ .start .way{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:12px;align-content:start} .start .way .val,.start .way .btn{margin-top:0;align-self:start} }
+@media (max-width:860px){ .start .ways{grid-template-rows:none} .start .way{grid-row:auto;display:flex} }
 .stack{background:linear-gradient(180deg,var(--paper) 0%,var(--mauve-wash) 100%)}
 .trust svg{color:var(--mauve-deep)}
 .faq summary{font-weight:400}
@@ -775,15 +785,15 @@ html.js-roll .roll{display:block}
 </section>
 
 <section class="posts" id="blog">
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="press" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.1" result="b"/><feOffset in="b" dx="1.4" dy="1.8" result="o1"/><feComposite in="o1" in2="SourceAlpha" operator="out" result="outS"/><feFlood flood-color="#7A705C" flood-opacity=".55"/><feComposite in2="outS" operator="in" result="dropShadow"/><feOffset in="b" dx="-1.1" dy="-1.3" result="o2"/><feComposite in="o2" in2="SourceAlpha" operator="out" result="outH"/><feFlood flood-color="#FFFFFF" flood-opacity=".9"/><feComposite in2="outH" operator="in" result="rimLight"/><feOffset in="b" dx="-.8" dy="-1" result="o3"/><feComposite in="SourceAlpha" in2="o3" operator="out" result="inLow"/><feFlood flood-color="#9C927D" flood-opacity=".35"/><feComposite in2="inLow" operator="in" result="lowerEdge"/><feOffset in="b" dx=".8" dy="1" result="o4"/><feComposite in="SourceAlpha" in2="o4" operator="out" result="inTop"/><feFlood flood-color="#FFFFFF" flood-opacity=".85"/><feComposite in2="inTop" operator="in" result="topEdge"/><feMerge><feMergeNode in="dropShadow"/><feMergeNode in="rimLight"/><feMergeNode in="SourceGraphic"/><feMergeNode in="lowerEdge"/><feMergeNode in="topEdge"/></feMerge></filter></defs></svg>
+  
   <div class="wrap">
     <div>
       <p class="eyebrow reveal">From the blog</p>
       <h2 class="reveal" style="--d:4%">Answers to the questions people ask <em>before</em> they call.</h2>
       <ul class="list reveal" style="--d:8%">
-        <li><a href="blog/how-do-you-know-if-you-need-therapy/"><svg class="press" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g filter="url(#press)"><path d="M32 55V31"/><path d="M32 40c-10 0-16-7-16-16 10 0 16 7 16 16z"/><path d="M32 33c0-10 7-17 16-17 0 10-7 17-16 17z"/><path d="M18 55h28"/><path d="M24 31l8-9"/></g></svg><span><span class="eyebrow">Getting started</span><h3>How Do You Know If You Need Therapy? 12 Signs It Might Be Time</h3></span></a></li>
-        <li><a href="blog/affordable-therapy-without-insurance/"><svg class="press" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g filter="url(#press)"><path d="M9 36c4 13 42 13 46 0"/><path d="M9 36l-3-6M55 36l3-6"/><path d="M32 40c-8-4-10-14-4-23 8 6 10 16 4 23z"/><path d="M32 40l-3-17"/><path d="M20 46c4 3 20 3 24 0"/></g></svg><span><span class="eyebrow">Cost</span><h3>Affordable Therapy Without Insurance: Sliding Scale, Superbills and Other Real Options</h3></span></a></li>
-        <li><a href="blog/what-to-expect-first-therapy-session/"><svg class="press" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g filter="url(#press)"><path d="M17 55V30a15 15 0 0 1 30 0v25"/><path d="M12 55h40"/><path d="M27 55c2-5 7-7 5-12-1-3 1-5 3-6"/><circle cx="32" cy="27" r="3.4"/></g></svg><span><span class="eyebrow">First session</span><h3>What to Expect in Your First Therapy Session (So You Can Stop Dreading It)</h3></span></a></li>
+        <li><a href="blog/how-do-you-know-if-you-need-therapy/"><img class="press" src="assets/media/press-seedling.png" width="84" height="84" alt="" loading="lazy"><span><span class="eyebrow">Getting started</span><h3>How Do You Know If You Need Therapy? 12 Signs It Might Be Time</h3></span></a></li>
+        <li><a href="blog/affordable-therapy-without-insurance/"><img class="press" src="assets/media/press-hands.png" width="84" height="84" alt="" loading="lazy"><span><span class="eyebrow">Cost</span><h3>Affordable Therapy Without Insurance: Sliding Scale, Superbills and Other Real Options</h3></span></a></li>
+        <li><a href="blog/what-to-expect-first-therapy-session/"><img class="press" src="assets/media/press-doorway.png" width="84" height="84" alt="" loading="lazy"><span><span class="eyebrow">First session</span><h3>What to Expect in Your First Therapy Session (So You Can Stop Dreading It)</h3></span></a></li>
       </ul>
       <a class="textlink all reveal" href="blog/">All articles</a>
     </div>
@@ -799,9 +809,9 @@ html.js-roll .roll{display:block}
     <h2 class="reveal" style="--d:4%">Clear pricing, no insurance paperwork.</h2>
     <p class="lede reveal" style="--d:8%">Sessions are $150 to $175 for individuals and $200 for couples, by secure video. Insurance is not accepted, and a superbill for out-of-network benefits is available on request.</p>
     <div class="grid">
-      <div class="card reveal"><h3>Individual sessions</h3><div class="big">$150 to $175</div><p>50 minutes, ages 12 and up. Weekly or every other week. Evening and weekend times available.</p></div>
-      <div class="card reveal" style="--d:5%"><h3>Couples sessions</h3><div class="big">$200</div><p>60 to 80 minutes, for couples at any stage, including pre-marital counseling. Both partners join from wherever they are.</p></div>
-      <div class="card reveal" style="--d:10%"><h3>Sliding scale</h3><div class="big">Ask at your consult</div><p>A limited number of reduced-fee spots are held for people with financial need. Bring it up on the call and we will talk it through together.</p><div class="pay"><span>PayPal</span><span>Venmo</span><span>Cash App</span></div></div>
+      <div class="card reveal"><h3>Individual sessions</h3><div class="big">$150 to $175</div><p>50 minutes, ages 12 and up. Weekly or every other week. Evening and weekend times available.</p><a class="go" href="#book">Book an individual consult</a></div>
+      <div class="card reveal" style="--d:5%"><h3>Couples sessions</h3><div class="big">$200</div><p>60 to 80 minutes, for couples at any stage, including pre-marital counseling. Both partners join from wherever they are.</p><a class="go" href="#book">Book a couples consult</a></div>
+      <div class="card reveal" style="--d:10%"><h3>Sliding scale</h3><div class="big">Ask at your consult</div><p>A limited number of reduced-fee spots are held for people with financial need. Bring it up on the call and we will talk it through together.</p><div class="pay"><span>PayPal</span><span>Venmo</span><span>Cash App</span></div><a class="go" href="#book">Ask about the sliding scale</a></div>
     </div>
     <details class="more gfe reveal" style="--d:12%"><summary>About the Good Faith Estimate</summary><p>Under the federal No Surprises Act, you have the right to a Good Faith Estimate of what your care is expected to cost. You will receive one in writing before your first session, and any time you ask. <a class="textlink" href="good-faith-estimate/">Read about the Good Faith Estimate</a>.</p></details>
   </div>

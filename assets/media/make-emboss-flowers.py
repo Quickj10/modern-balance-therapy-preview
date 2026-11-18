@@ -1,7 +1,7 @@
 import math, random
 random.seed(11)
 W=H=900
-BG='#EBE6D8'
+BG='#EFE9DD'
 out=[]
 def P(x,y): return f'{x:.1f},{y:.1f}'
 def leaf(x,y,ang,L,w):
