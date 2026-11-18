@@ -62,6 +62,7 @@ def css_block(start_marker, end_marker=None):
 
 shared_css = (css_block(':root{', '/* hero */')
               + css_block('/* crisis */', '/* footer */')
+              + css_block('/* contact / form */', '/* crisis */')
               + css_block('/* footer */', '/* stacking stones') )
 # the home page's reduced-motion catch-all, trimmed to what blog pages use
 shared_css += '\n@media (prefers-reduced-motion: reduce){ .btn,.stones .s{transition:none !important} }\n'
@@ -80,6 +81,7 @@ def relink(fragment, root):
     fragment = fragment.replace('href="#top"', 'href="%s"' % root)
     fragment = re.sub(r'href="#([a-z]+)"', lambda m: 'href="%s#%s"' % (root, m.group(1)), fragment)
     fragment = fragment.replace('href="blog/"', 'href="%sblog/"' % root)
+    fragment = fragment.replace('href="referral/"', 'href="%sreferral/"' % root)
     fragment = fragment.replace('id="stones"', '')  # no easter egg wiring on blog pages
     return fragment
 
@@ -274,8 +276,30 @@ index_html = '''<!doctype html>
 (HERE / 'index.html').write_text(index_html, encoding='utf-8')
 print('  wrote blog/index.html')
 
+# ---------- static extra pages (referral) ----------
+EXTRA_PAGES = [  # (dir, template, lastmod, priority, llms line)
+    ('referral', HERE / '_referral.html', '2026-11-18', '0.6', '- [Make a referral](%sreferral/): for physicians, school counselors, therapists, clergy, EAPs and families referring someone in Texas' % BASE),
+]
+for pdir, tplpath, lm, pr, _ in EXTRA_PAGES:
+    root = '../'
+    url = BASE + pdir + '/'
+    ld = json.dumps({"@context": "https://schema.org", "@graph": [
+        {"@type": ["WebPage", "ContactPage"], "@id": url + "#page", "url": url, "name": "Make a Referral | Modern Balance Therapy",
+         "description": "Refer a client, student, parishioner or family member to Modern Balance Therapy for secure telehealth counseling anywhere in Texas.",
+         "isPartOf": {"@id": BASE + "#website"}, "about": {"@id": BASE + "#practice"}, "mainEntity": {"@id": BASE + "#practice"},
+         "inLanguage": "en-US", "datePublished": lm, "dateModified": lm},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
+            {"@type": "ListItem", "position": 2, "name": "Make a referral", "item": url}]}
+    ]}, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    page = render(tplpath.read_text(encoding='utf-8'), dict(noindex=NOINDEX, favicon=FAVICON, root=root, base=BASE, jsonld=ld,
+                  header=relink(header_html, root), footer=relink(footer_html, root), crisis=crisis_html))
+    (DEPLOY / pdir).mkdir(exist_ok=True)
+    (DEPLOY / pdir / 'index.html').write_text(page, encoding='utf-8')
+    print('  wrote %s/index.html' % pdir)
+
 # ---------- sitemap, robots, llms.txt ----------
-urls = [(BASE, TODAY, '1.0'), (BASE + 'blog/', TODAY, '0.8')] + [(BASE + 'blog/' + p['slug'] + '/', p['date_modified'], '0.7') for p in posts]
+urls = [(BASE, TODAY, '1.0'), (BASE + 'blog/', TODAY, '0.8')] + [(BASE + 'blog/' + p['slug'] + '/', p['date_modified'], '0.7') for p in posts] + [(BASE + d + '/', lm, pr) for d, _, lm, pr, _ in EXTRA_PAGES]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for u, lm, pr in urls:
     sm.append('  <url><loc>%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>' % (u, lm, pr))
@@ -312,7 +336,7 @@ llms = ['# Modern Balance Therapy', '',
         '## Services and fees (USD)', '- Free 15-minute consultation: $0', '- Individual therapy, 50 minutes: $150 to $175', '- Couples therapy, 60 to 80 minutes: $200', '- Insurance: not accepted. Superbills for out-of-network benefits available on request. A limited sliding scale exists for financial need; ask at the consult.', '- Good Faith Estimate provided in writing before the first session (No Surprises Act)', '- Payment: PayPal, Venmo, Cash App', '- Evening and weekend sessions available; early mornings are not offered', '',
         '## Approaches', '- Trauma-Focused CBT, Cognitive Behavioral Therapy, Psychodynamic Therapy, Solution-Focused Brief Therapy, Person-Centered Therapy, Family Systems Therapy', '- Christian-based counseling available on request', '',
         '## Contact', '- Website: ' + BASE, '- Book a consult: ' + BASE + '#book', '- Email: jackie@modernbalancetherapy.com', '- Phone: 832-960-3272', '- Licensed by the Texas Behavioral Health Executive Council', '',
-        '## Key pages', '- [Home](%s): services, fees, FAQ, booking' % BASE, '- [About Jackie](%s#about)' % BASE, '- [Fees](%s#fees)' % BASE, '- [FAQ](%s#faq)' % BASE, '- [Blog](%sblog/)' % BASE, '']
+        '## Key pages', '- [Home](%s): services, fees, FAQ, booking' % BASE, '- [About Jackie](%s#about)' % BASE, '- [Fees](%s#fees)' % BASE, '- [FAQ](%s#faq)' % BASE, '- [Blog](%sblog/)' % BASE] + [e[4] for e in EXTRA_PAGES] + ['## Referrals', '- Physicians, school counselors, therapists at capacity, clergy, EAPs and family members (with the person\'s consent) can refer someone in Texas at %sreferral/. Jackie reaches out within one business day and provides a community referral if she is not the right fit.' % BASE, '']
 if posts:
     llms += ['## Articles (by Jackie McGreggor, MA, LPC, each with peer-reviewed references)']
     llms += ['- [%s](%sblog/%s/): %s' % (p['title'], BASE, p['slug'], p['excerpt']) for p in posts]

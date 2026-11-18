@@ -105,6 +105,42 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 .crisis .wrap{display:flex;gap:16px;align-items:flex-start;font-size:.95rem;line-height:1.5}
 .crisis svg{flex:none;width:22px;height:22px;margin-top:2px;color:var(--lav)}
 
+/* contact / form */
+.contact .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px);align-items:start}
+.contact h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
+.contact .side p{color:var(--muted);margin-top:18px;max-width:30em}
+.contact .direct{margin-top:30px;display:grid;gap:12px}
+.contact .direct div{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;font-size:.95rem;min-width:0;background:var(--paper)}
+.contact .direct div span{min-width:0;overflow-wrap:anywhere}
+.contact .direct button{font:inherit;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:.55em .95em;cursor:pointer;color:var(--ink);flex:none}
+.contact .direct button:hover{border-color:var(--violet);color:var(--violet)}
+form.req{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3vw,36px);display:grid;gap:18px}
+form.req .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:540px){ form.req .two{grid-template-columns:1fr} }
+label,.field{display:grid;gap:7px;font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+label small{font-weight:400;color:var(--muted);letter-spacing:.04em;text-transform:none;font-size:.82rem}
+.chips label{display:inline;text-transform:none;letter-spacing:0}
+input[type=text],input[type=email],input[type=tel],textarea{font:inherit;font-size:1rem;font-weight:400;letter-spacing:0;color:var(--ink);background:#fff;border:1px solid var(--line-strong);border-radius:var(--radius);padding:12px 14px;width:100%;min-width:0}
+textarea{min-height:110px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;font-size:.9rem;font-weight:400;border:1px solid var(--line-strong);border-radius:999px;padding:.55em 1em;cursor:pointer;user-select:none}
+.chips input:checked + span{background:var(--lav-soft);border-color:var(--violet);color:var(--violet-deep);font-weight:500}
+.chips input:focus-visible + span{outline:2px solid var(--violet);outline-offset:2px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted)}
+.consent input{margin-top:4px;width:16px;height:16px;flex:none;accent-color:var(--violet)}
+form.req .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+form.req .foot small{color:var(--muted);font-size:.82rem}
+.sent{display:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(28px,4vw,44px)}
+.sent h3{font-size:1.9rem;margin-bottom:12px}
+.sent p{color:var(--muted);max-width:32em}
+.sent .ok{width:44px;height:44px;color:var(--violet);margin-bottom:16px}
+.contact.done form.req{display:none}
+.contact.done .sent{display:block}
+.err{color:#A5463F;font-size:.85rem;letter-spacing:0;text-transform:none;display:none}
+form.req.invalid .err{display:block}
+@media (max-width:860px){ .contact .wrap{grid-template-columns:1fr} }
+
 /* footer */
 footer.site{background:#fff;padding-block:48px 56px;font-size:.9rem;color:var(--muted)}
 footer.site .wrap.cols{display:grid;grid-template-columns:170px 1.2fr 1fr 1fr;gap:40px;align-items:start} footer.site .fmark{align-self:center}

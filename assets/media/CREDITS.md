@@ -2,7 +2,7 @@
 
 Every shipped item is licensed for free commercial use without attribution (CC0 / Public Domain via the WordPress Photo Directory and Wikimedia Commons, Mixkit License for video). Credits are recorded anyway. Ally's reference images (design-references/modern-balance-therapy/round2) were NOT used anywhere. Earlier rawpixel candidates were dropped because their free previews are watermarked.
 
-Grading toward the site palette (noted per the brief): photos get saturation reduced about 16 percent, blacks lifted about 5 percent, a touch of warmth (blue channel slightly lower). The band image is graded harder (saturation about 25 percent lower, blacks lifted 7 percent) to pull a pink dandelion macro toward peach and cream; on Nov 18 the band was re-graded with a hue shift of about minus 65 degrees so the pink reads as lavender, per Ally. The hero video was graded in ffmpeg (eq saturation 0.8, brightness +0.03, contrast 0.96, curves lift) and loop-crossfaded over 0.6 s.
+Grading toward the site palette (noted per the brief): photos get saturation reduced about 16 percent, blacks lifted about 5 percent, a touch of warmth (blue channel slightly lower). The band image is graded harder (saturation about 25 percent lower, blacks lifted 7 percent) to pull a pink dandelion macro toward peach and cream; on Nov 18 the band was re-graded with a hue shift of about minus 65 degrees so the pink reads as lavender, then re-graded again (hue shift, saturation 0.42, 38 percent blend with #E2DBF0) to a soft muted lavender, per Ally. The hero video was graded in ffmpeg (eq saturation 0.8, brightness +0.03, contrast 0.96, curves lift) and loop-crossfaded over 0.6 s.
 
 ## Hero video
 
