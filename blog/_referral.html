@@ -25,7 +25,7 @@
 <script type="application/ld+json">{{jsonld}}</script>
 <style>
 /* referral page */
-.ref-hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
+.ref-hero .wrap{max-width:1120px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
 .ref-hero .kicker{font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--violet-deep);margin:0 0 10px}
 .ref-hero h1{margin:0 0 18px}
 .ref-hero .lede{font-size:1.1rem;color:var(--ink);max-width:34em;line-height:1.6}
@@ -55,6 +55,7 @@
 .know ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.95rem;color:var(--ink)}
 .know li{padding-left:18px;position:relative;line-height:1.5}
 .know li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--violet)}
+.ref-form,.ref-form form.req{box-shadow:none !important}
 .ref-form h2{margin-bottom:6px}
 .ref-form>p{margin-bottom:22px}
 select{font:inherit;font-size:1rem;font-weight:400;letter-spacing:0;color:var(--ink);background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%236B5CAB' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 14px center;border:1px solid var(--line-strong);border-radius:var(--radius);padding:.8em 2.4em .8em .9em;min-height:46px;width:100%;appearance:none;-webkit-appearance:none}
