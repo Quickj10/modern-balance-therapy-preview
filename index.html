@@ -360,7 +360,7 @@ details.more>.panel{display:grid;gap:14px;max-width:38em;color:var(--ink)}
 @media (max-width:860px){ .posts .wrap{grid-template-columns:1fr} .posts .art{min-height:0;margin-top:12px} .posts .art::before{left:14%;top:14%;bottom:-20px} .posts .art img{width:min(320px,80%)} }
 
 /* journals */
-.journals{padding-block:0 clamp(64px,9vw,120px)}
+.journals{padding-block:0 clamp(64px,9vw,120px);background:#fff}
 .jcard{background:linear-gradient(135deg,var(--mauve-wash),var(--mauve-soft));border-radius:var(--radius);padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(24px,4vw,56px);align-items:end}
 .jcard h2{font-size:clamp(1.8rem,3.2vw,2.5rem);margin:12px 0 14px}
 .jcard .lede{font-size:1.02rem;color:var(--ink);opacity:.8}
@@ -557,11 +557,13 @@ html.js-roll .roll{display:block}
 .start .way .badge{background:var(--olive);border-color:var(--olive)}
 .start .way .badge svg{color:#fff}
 .start .way .val{background:#fff;border:0;padding:0;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:12px;font-size:1rem}
+.start .way .val{border-top:1px solid var(--line);padding-top:20px;margin-top:8px;border-radius:0;align-self:stretch;width:100%}
+.start .way .btn{margin-top:29px}
 .start .way .val button{background:var(--olive-deep);border-color:var(--olive-deep);color:#fff}
 .start .way .val button:hover{background:#3F4935;border-color:#3F4935;color:#fff}
 .start .eyebrow{color:var(--olive-deep)}
 .start .ways{grid-template-rows:auto auto auto auto}
-@supports (grid-template-rows:subgrid){ .start .way{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:12px;align-content:start} .start .way .val,.start .way .btn{margin-top:0;align-self:start} }
+@supports (grid-template-rows:subgrid){ .start .way{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:12px;align-content:start} .start .way .val{margin-top:8px;align-self:start;justify-self:stretch} .start .way .btn{margin-top:29px;align-self:start} }
 @media (max-width:860px){ .start .ways{grid-template-rows:none} .start .way{grid-row:auto;display:flex} }
 .stack{background:linear-gradient(180deg,var(--paper) 0%,var(--mauve-wash) 100%)}
 .trust svg{color:var(--mauve-deep)}
