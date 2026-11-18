@@ -43,6 +43,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 .skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
 .ph{position:relative;background:linear-gradient(160deg,var(--lav-soft),var(--sage-soft) 70%,var(--paper-2));border:1px solid var(--line);overflow:hidden;display:grid;place-items:center;max-width:100%}
 .ph svg.leaf{width:38%;max-width:160px;color:var(--sage-light);opacity:.9}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:auto}
 .ph .cap{position:absolute;left:14px;bottom:12px;right:14px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-weight:500}
 
 /* buttons */
@@ -162,6 +163,8 @@ body{font-size:1.125rem}
 .crumbs span[aria-hidden]{color:var(--muted)}
 .post-hero h1{font-size:clamp(2.2rem,5vw,3.6rem);margin-top:18px;max-width:14em}
 .post-hero h1 em{font-style:italic;color:var(--violet-deep)}
+.art-hero{margin:28px 0 0;border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);overflow:hidden;background:var(--paper)}
+.art-hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 .byline{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:.84rem;font-weight:500;letter-spacing:.04em;color:var(--ink);align-items:center}
 .byline .who{display:flex;align-items:center;gap:10px}
 .byline .who svg{width:26px;height:26px}
@@ -236,7 +239,9 @@ body{font-size:1.125rem}
 .blog-hero .lede{margin-top:18px;color:var(--ink)}
 .blog-list{background:#fff;padding-block:clamp(40px,6vw,80px)}
 .blog-list .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.pcard{display:flex;flex-direction:column;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;text-decoration:none;color:var(--ink);min-width:0;transition:border-color .2s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.pcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;color:var(--ink);min-width:0;transition:border-color .2s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.pcard .thumb{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.pcard .inner{display:flex;flex-direction:column;gap:12px;padding:24px 26px 28px;flex:1}
 .pcard:hover{border-color:var(--violet);transform:translateY(-2px)}
 .pcard .meta{font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .pcard h2{font-size:1.5rem;line-height:1.2}

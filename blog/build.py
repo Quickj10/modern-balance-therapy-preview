@@ -28,6 +28,17 @@ STONES_SVG = ('<svg viewBox="0 0 34 34" aria-hidden="true"><ellipse cx="17" cy="
 REQUIRED = ['slug','title','meta_description','direct_answer','key_takeaways','body_html','faqs','references',
             'reading_minutes','date_published','keywords','excerpt']
 REF_REQUIRED = ['n','authors','year','title','source','url','verified']
+THUMB_DEFAULT = {'how-do-you-know-if-you-need-therapy':'thumb-need-therapy','affordable-therapy-without-insurance':'thumb-affordable',
+  'what-to-expect-first-therapy-session':'thumb-first-session','does-online-therapy-work':'thumb-online','signs-of-unresolved-trauma':'thumb-trauma',
+  'stress-vs-anxiety-when-to-get-help':'thumb-anxiety','high-functioning-depression':'thumb-depression','when-should-couples-go-to-therapy':'thumb-couples',
+  'does-my-teen-need-therapy':'thumb-teen','how-long-does-therapy-take':'thumb-how-long'}
+THUMB_ALT = {'thumb-need-therapy':'A quiet path disappearing into morning fog','thumb-affordable':'Smooth grey pebbles packed closely together',
+  'thumb-first-session':'A country road on a foggy morning with one tall tree','thumb-online':'Still water reflecting a soft, cloudy sky',
+  'thumb-trauma':'A single small stone resting on pale sand','thumb-anxiety':'A still mountain lake under low cloud',
+  'thumb-depression':'A lone conifer standing in pale haze','thumb-couples':'Two gulls gliding over mirror-still water',
+  'thumb-teen':'A dandelion seed head against soft green','thumb-how-long':'Wind ripples in pale sand'}
+def thumb_of(d): return d.get('thumb') or THUMB_DEFAULT.get(d['slug'],'thumb-need-therapy')
+def thumb_alt_of(d): return d.get('thumb_alt') or THUMB_ALT.get(thumb_of(d),'Calm nature photograph')
 
 def die(msg):
     print('BUILD FAILED:', msg, file=sys.stderr); sys.exit(1)
@@ -152,8 +163,8 @@ def jsonld_post(d, url):
          "author": {"@type": "Person", "@id": BASE + "#jackie", "name": "Jackie McGreggor", "honorificSuffix": "MA, LPC",
                     "jobTitle": "Licensed Professional Counselor", "url": BASE + "#about"},
          "publisher": {"@type": "Organization", "@id": BASE + "#practice", "name": "Modern Balance Therapy", "url": BASE,
-                       "logo": {"@type": "ImageObject", "url": BASE + "assets/og.png"}},
-         "image": BASE + "assets/og.png", "keywords": ", ".join(d['keywords']), "wordCount": wc,
+                       "logo": {"@type": "ImageObject", "url": BASE + "assets/media/hero-poster.jpg"}},
+         "image": {"@type": "ImageObject", "url": BASE + "assets/media/" + thumb_of(d) + ".webp", "width": 1200, "height": 800}, "keywords": ", ".join(d['keywords']), "wordCount": wc,
          "articleSection": "Mental health", "inLanguage": "en-US", "isAccessibleForFree": True,
          "about": [{"@type": "Thing", "name": k} for k in d['keywords'][:5]],
          "citation": [{"@type": "CreativeWork", "name": r['title'], "author": r['authors'], "datePublished": str(r['year']), "url": r['url']} for r in d['references']],
@@ -186,7 +197,8 @@ for d in posts:
         body_html=d['body_html'], faqs_html=faq_html(d['faqs']),
         references_html='\n'.join(ref_li(r) for r in sorted(d['references'], key=lambda r: int(r['n']))),
         more_articles_html=more_html(d['slug'], root), jsonld=jsonld_post(d, url), stones_svg=STONES_SVG,
-        header=relink(header_html, root), footer=relink(footer_html, root), crisis=crisis_html)
+        header=relink(header_html, root), footer=relink(footer_html, root), crisis=crisis_html,
+        thumb=thumb_of(d), thumb_alt=esc(thumb_alt_of(d)), thumb_abs=BASE + 'assets/media/' + thumb_of(d) + '.webp')
     out = render(template, ctx)
     outdir = HERE / d['slug']; outdir.mkdir(exist_ok=True)
     (outdir / 'index.html').write_text(out, encoding='utf-8')
@@ -195,8 +207,8 @@ for d in posts:
 # ---------- blog index ----------
 root = '../'
 cards = '\n'.join(
-    '<a class="pcard" href="%s/"><span class="meta">%s · %d min read</span><h2>%s</h2><p>%s</p><span class="read">Read the article</span></a>'
-    % (esc(p['slug']), human_date(p['date_published']), int(p['reading_minutes']), esc(p['title']), esc(p['excerpt'])) for p in posts)
+    '<a class="pcard" href="%s/"><img class="thumb" src="../assets/media/%s-800.webp" width="800" height="533" alt="%s" loading="lazy"><span class="inner"><span class="meta">%s · %d min read</span><h2>%s</h2><p>%s</p><span class="read">Read the article</span></span></a>'
+    % (esc(p['slug']), thumb_of(p), esc(thumb_alt_of(p)), human_date(p['date_published']), int(p['reading_minutes']), esc(p['title']), esc(p['excerpt'])) for p in posts)
 if not posts:
     cards = '<p class="lede">Articles are on their way. Check back soon.</p>'
 index_ld = json.dumps({"@context": "https://schema.org", "@graph": [
@@ -225,7 +237,7 @@ index_html = '''<!doctype html>
 <meta property="og:title" content="The Modern Balance blog">
 <meta property="og:description" content="%(desc)s">
 <meta property="og:url" content="%(base)sblog/">
-<meta property="og:image" content="%(base)sassets/og.png">
+<meta property="og:image" content="%(base)sassets/media/hero-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
