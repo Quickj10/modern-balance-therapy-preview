@@ -106,7 +106,7 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 
 /* footer */
 footer.site{background:#fff;padding-block:48px 56px;font-size:.9rem;color:var(--muted)}
-footer.site .wrap.cols{display:grid;grid-template-columns:170px 1.2fr 1fr 1fr;gap:40px;align-items:center}
+footer.site .wrap.cols{display:grid;grid-template-columns:170px 1.2fr 1fr 1fr;gap:40px;align-items:start} footer.site .fmark{align-self:center}
 footer.site h3{font-family:var(--body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:12px;font-weight:600}
 footer.site ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 footer.site a{text-decoration:none}
