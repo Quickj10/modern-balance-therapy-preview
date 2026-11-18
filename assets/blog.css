@@ -129,6 +129,10 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 html .kicker,html .hero .kicker,html .mirror li,html .about .pull,html footer.site .tag,html .egg,html .legal-hero .kicker,html .ref-hero .kicker,html .body blockquote,html .post-hero h1 em,html .ref-body h2 em,html .jcard h2 em,html .meet h2 em,html .mnav a.row em{font-family:var(--accent);font-weight:400;font-style:italic}
 .ph .init{font-family:var(--display);font-weight:400}
 .posts .card,.fees .card,.start .way,.jcard,.answer,.takeaways,.post-cta,.know,.review,.inshort,.pcard{border-radius:var(--radius-card)}
+/* Ally 11/18: soft drop shadow on every card */
+:root{--shadow-card:0 1px 2px rgba(46,38,48,.06),0 10px 24px -10px rgba(46,38,48,.18),0 28px 48px -28px rgba(46,38,48,.16)}
+.posts .card,.fees .card,.start .way,.jcard,.answer,.takeaways,.post-cta,.know,.review,.inshort,.pcard,.paper,form.req,.mirror .card,.about .card,.ref-form,.legal .box{box-shadow:var(--shadow-card)}
+
 .posts .card .thumb,.pcard img{border-radius:0}
 nav.main,.textlink,.trust b,footer.site h3,.brand small,label,.field{font-weight:500}
 
@@ -330,3 +334,7 @@ body{font-size:1.125rem}
 .pcard .read{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
 @media (max-width:760px){ .blog-list .grid{grid-template-columns:1fr} .author{grid-template-columns:1fr} }
 @media print{ header.site,.crisis,.post-cta,.post-foot,.menu-btn,.hdr-cta{display:none !important} body{font-size:11pt;background:#fff} .post-hero{background:#fff;padding:0} .article{padding:0} .refs a::after{content:" (" attr(href) ")";font-size:.85em} .body a{color:var(--ink)} }
+
+/* Ally 11/18: soft drop shadow on every card */
+:root{--shadow-card:0 1px 2px rgba(46,38,48,.06),0 10px 24px -10px rgba(46,38,48,.18),0 28px 48px -28px rgba(46,38,48,.16)}
+.posts .card,.fees .card,.start .way,.jcard,.answer,.takeaways,.post-cta,.know,.review,.inshort,.pcard,.paper,form.req,.mirror .card,.about .card,.ref-form,.legal .box{box-shadow:var(--shadow-card)}
