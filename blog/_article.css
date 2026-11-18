@@ -1,13 +1,13 @@
 /* ---- blog-only styles (appended after the shared CSS extracted from site/index.html) ---- */
 body{font-size:1.125rem}
-.post-hero{background:var(--lav);padding-block:clamp(40px,6vw,80px)}
+.post-hero{background:linear-gradient(160deg,var(--slate-wash) 0%,var(--slate) 100%);padding-block:clamp(40px,6vw,80px)}
 .post-hero .wrap,.article .wrap,.post-foot .wrap{max-width:760px}
 .crumbs{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-deep);display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
 .crumbs a{text-decoration:none}
 .crumbs a:hover{text-decoration:underline}
 .crumbs span[aria-hidden]{color:var(--muted)}
 .post-hero h1{font-size:clamp(2.2rem,5vw,3.6rem);margin-top:18px;max-width:14em}
-.post-hero h1 em{font-family:var(--accent);font-style:italic;font-weight:300;color:var(--wine)}
+.post-hero h1 em{font-family:var(--accent);font-style:italic;font-weight:400;color:var(--wine)}
 .art-hero{margin:28px 0 0;border:1px solid rgba(255,255,255,.7);border-radius:var(--radius);overflow:hidden;background:var(--paper)}
 .art-hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 .byline{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:.84rem;font-weight:500;letter-spacing:.04em;color:var(--ink);align-items:center}
@@ -52,7 +52,7 @@ body{font-size:1.125rem}
 .post-faq details:last-of-type{border-bottom:1px solid var(--line)}
 .post-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:18px 0;font-family:var(--display);font-weight:500;font-size:1.3rem;line-height:1.25}
 .post-faq summary::-webkit-details-marker{display:none}
-.post-faq summary::after{content:"+";font-family:var(--body);font-weight:300;font-size:1.5rem;line-height:1;color:var(--violet);transition:transform .3s;flex:none}
+.post-faq summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:1.5rem;line-height:1;color:var(--violet);transition:transform .3s;flex:none}
 .post-faq details[open] summary::after{transform:rotate(45deg)}
 .post-faq details p{padding:0 0 20px;color:var(--muted);max-width:40em;font-size:1rem}
 .refs{margin-top:48px;padding-top:28px;border-top:1px solid var(--line)}
@@ -79,7 +79,7 @@ body{font-size:1.125rem}
 .more a:hover{color:var(--violet-deep)}
 .post-foot .all{margin-top:24px;display:inline-block}
 /* blog index */
-.blog-hero{background:var(--lav);padding-block:clamp(48px,7vw,88px)}
+.blog-hero{background:linear-gradient(160deg,var(--slate-wash) 0%,var(--slate) 100%);padding-block:clamp(48px,7vw,88px)}
 .blog-hero h1{font-size:clamp(2.4rem,5.5vw,4rem)}
 .blog-hero .lede{margin-top:18px;color:var(--ink)}
 .blog-list{background:#fff;padding-block:clamp(40px,6vw,80px)}

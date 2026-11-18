@@ -49,7 +49,7 @@ Put the new source file in assets/media/_raw, change the key in the plan inside 
 
 | File | Used for | Source page | Creator | License |
 |---|---|---|---|---|
-| frame-hands.webp | Mirror section tilted photo | https://wordpress.org/photos/photo/57367ca6d7/ | WordPress Photo Directory contributor (see page) | CC0 |
+| frame-hands.webp (removed Nov 18, v5: purple salvia fought the palette) | formerly mirror section photo | https://wordpress.org/photos/photo/57367ca6d7/ | WordPress Photo Directory contributor (see page) | CC0 |
 | frame-ripples.webp | Focus section blob frame | https://wordpress.org/photos/photo/6706a994f1/ | see page | CC0 |
 | band-light.webp | Full-bleed band (plant shadow on cream wall) | https://wordpress.org/photos/photo/24168f4752/ | see page | CC0 |
 | mosaic-grass.webp | Mosaic tile (backlit grass, 4:5 crop of the earlier frame-grass source) | https://wordpress.org/photos/photo/370670ac14/ | Mohammed Jamsheed KM | CC0 |
@@ -59,3 +59,8 @@ Put the new source file in assets/media/_raw, change the key in the plan inside 
 
 Grade: saturation 0.8, warm lift (R +10, G +8, B +4, blue ceiling 246). Hero video re-graded warmer (eq saturation 0.72, gamma_r 1.03, gamma_b 0.97).
 Retired this round: frame-grass, frame-stones, band-mist (kept on disk for the contact sheet).
+
+
+## v5 (Nov 18): painted shapes replace the hero video
+- Hero video files (hero.mp4, hero.webm, hero-poster.jpg) stay in the folder but are no longer referenced; the hero is now a painted SVG shape (assets/paint-hero.svg). The mirror band uses assets/paint-strokes.svg and the About section uses assets/petals.svg, all drawn in code, no stock.
+- frame-ripples.webp moved from the specialties frame to the "From the blog" offset photo.
