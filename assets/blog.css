@@ -83,6 +83,7 @@ header.site .mnav .wrap{display:block;padding-block:0}
 .mnav a.row:last-of-type{border-bottom:0}
 .mnav .btn{width:100%;margin-top:14px}
 @media (prefers-reduced-motion: no-preference){ .mnav:not([hidden]){animation:mnavIn .18s ease both} @keyframes mnavIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}} }
+@media (max-width:1140px){ nav.main{gap:18px;letter-spacing:.1em;font-size:.74rem} }
 @media (max-width:900px){ nav.main{display:none} .menu-btn{display:inline-flex;flex-shrink:0} header.site .wrap{gap:10px} .brand{flex-shrink:0} .brand span{white-space:nowrap} .hdr-cta{padding:.95em 1.1em;font-size:.7rem;margin-left:auto} .menu-btn{margin-left:0} }
 @media (max-width:600px){ .brand{font-size:1.1rem;gap:9px} .brand small{font-size:.52rem;letter-spacing:.2em} .hdr-cta .long{display:none} .hdr-cta .short{display:inline} .hdr-cta{padding:.9em .95em;font-size:.66rem} }
 @media (max-width:430px){ .menu-btn .lbl-open,.menu-btn .lbl-close{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap} .menu-btn{min-width:44px;justify-content:center;padding:0} }
@@ -104,6 +105,15 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 .crisis{background:var(--ink);color:var(--paper);padding-block:26px}
 .crisis .wrap{display:flex;gap:16px;align-items:flex-start;font-size:.95rem;line-height:1.5}
 .crisis svg{flex:none;width:22px;height:22px;margin-top:2px;color:var(--lav)}
+/* sticky mobile call bar */
+.callbar{display:none}
+@media (max-width:900px){
+  body{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
+  .callbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(52,49,63,.10);padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));transition:transform .22s ease,opacity .22s ease}
+  .callbar a{min-height:40px;padding:.7em 1em;font-size:.74rem;width:100%}
+  .callbar .btn-call{border-color:var(--violet);color:var(--violet-deep);background:#fff}
+  .callbar.hide,html.menu-open .callbar{transform:translateY(110%);opacity:0;pointer-events:none}
+}
 
 /* contact / form */
 .contact .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,80px);align-items:start}

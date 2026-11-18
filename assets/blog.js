@@ -3,7 +3,7 @@
   var hdr=document.querySelector('header.site'), btn=document.querySelector('.menu-btn'), panel=document.getElementById('mnav');
   if(!hdr||!btn||!panel) return;
   function setOpen(on){
-    hdr.classList.toggle('open',on); panel.hidden=!on;
+    hdr.classList.toggle('open',on); panel.hidden=!on; document.documentElement.classList.toggle('menu-open',on);
     btn.setAttribute('aria-expanded',on?'true':'false'); btn.setAttribute('aria-label',on?'Close menu':'Open menu');
     document.body.style.overflow=on?'hidden':'';
   }

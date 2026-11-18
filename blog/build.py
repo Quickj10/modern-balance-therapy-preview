@@ -75,13 +75,15 @@ def html_block(open_tag_prefix, close_tag):
 header_html = html_block('<header class="site">', '</header>')
 footer_html = html_block('<footer class="site">', '</footer>')
 crisis_html = html_block('<aside class="crisis"', '</aside>')
+callbar_html = html_block('<nav class="callbar"', '</nav>')
 
 def relink(fragment, root):
     """Point home-page anchors and the blog link at the right place from a sub-page."""
     fragment = fragment.replace('href="#top"', 'href="%s"' % root)
     fragment = re.sub(r'href="#([a-z]+)"', lambda m: 'href="%s#%s"' % (root, m.group(1)), fragment)
     fragment = fragment.replace('href="blog/"', 'href="%sblog/"' % root)
-    fragment = fragment.replace('href="referral/"', 'href="%sreferral/"' % root)
+    for sub in ('referral/', 'privacy/', 'hipaa/', 'good-faith-estimate/'):
+        fragment = fragment.replace('href="%s"' % sub, 'href="%s%s"' % (root, sub))
     fragment = fragment.replace('id="stones"', '')  # no easter egg wiring on blog pages
     return fragment
 
@@ -90,7 +92,7 @@ BLOG_JS = r"""(function(){
   var hdr=document.querySelector('header.site'), btn=document.querySelector('.menu-btn'), panel=document.getElementById('mnav');
   if(!hdr||!btn||!panel) return;
   function setOpen(on){
-    hdr.classList.toggle('open',on); panel.hidden=!on;
+    hdr.classList.toggle('open',on); panel.hidden=!on; document.documentElement.classList.toggle('menu-open',on);
     btn.setAttribute('aria-expanded',on?'true':'false'); btn.setAttribute('aria-label',on?'Close menu':'Open menu');
     document.body.style.overflow=on?'hidden':'';
   }
@@ -199,7 +201,7 @@ for d in posts:
         body_html=d['body_html'], faqs_html=faq_html(d['faqs']),
         references_html='\n'.join(ref_li(r) for r in sorted(d['references'], key=lambda r: int(r['n']))),
         more_articles_html=more_html(d['slug'], root), jsonld=jsonld_post(d, url), stones_svg=STONES_SVG,
-        header=relink(header_html, root), footer=relink(footer_html, root), crisis=crisis_html,
+        header=relink(header_html, root), footer=relink(footer_html, root), crisis=crisis_html, callbar=relink(callbar_html, root),
         thumb=thumb_of(d), thumb_alt=esc(thumb_alt_of(d)), thumb_abs=BASE + 'assets/media/' + thumb_of(d) + '.webp')
     out = render(template, ctx)
     outdir = HERE / d['slug']; outdir.mkdir(exist_ok=True)
@@ -266,34 +268,55 @@ index_html = '''<!doctype html>
   </div>
 </section>
 </main>
+%(callbar)s
 %(crisis)s
 %(footer)s
 <script src="../assets/blog.js" defer></script>
 </body>
 </html>
 ''' % dict(noindex=NOINDEX, desc=esc(INDEX_DESC), base=BASE, fav=FAVICON, ld=index_ld, header=relink(header_html, root),
-           footer=relink(footer_html, root), crisis=crisis_html, cards=cards)
+           footer=relink(footer_html, root), crisis=crisis_html, callbar=relink(callbar_html, root), cards=cards)
 (HERE / 'index.html').write_text(index_html, encoding='utf-8')
 print('  wrote blog/index.html')
 
-# ---------- static extra pages (referral) ----------
-EXTRA_PAGES = [  # (dir, template, lastmod, priority, llms line)
+# ---------- static extra pages (referral + legal) ----------
+LEGAL_DIR = HERE / 'legal'
+legal_tpl = (HERE / '_legal.html').read_text(encoding='utf-8')
+EXTRA_PAGES = [  # (dir, template path or 'legal:<json>', lastmod, priority, llms line)
     ('referral', HERE / '_referral.html', '2026-11-18', '0.6', '- [Make a referral](%sreferral/): for physicians, school counselors, therapists, clergy, EAPs and families referring someone in Texas' % BASE),
+    ('privacy', 'legal:privacy', '2026-11-18', '0.3', '- [Website privacy policy](%sprivacy/)' % BASE),
+    ('hipaa', 'legal:hipaa', '2026-11-18', '0.3', '- [HIPAA Notice of Privacy Practices](%shipaa/)' % BASE),
+    ('good-faith-estimate', 'legal:gfe', '2026-11-18', '0.4', '- [Good Faith Estimate (No Surprises Act)](%sgood-faith-estimate/): rights for self-pay clients and the practice fee table' % BASE),
 ]
+def crumb_ld(name, url):
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
+        {"@type": "ListItem", "position": 2, "name": name, "item": url}]}
+def ldjson(obj):
+    return json.dumps(obj, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 for pdir, tplpath, lm, pr, _ in EXTRA_PAGES:
     root = '../'
     url = BASE + pdir + '/'
-    ld = json.dumps({"@context": "https://schema.org", "@graph": [
-        {"@type": ["WebPage", "ContactPage"], "@id": url + "#page", "url": url, "name": "Make a Referral | Modern Balance Therapy",
-         "description": "Refer a client, student, parishioner or family member to Modern Balance Therapy for secure telehealth counseling anywhere in Texas.",
-         "isPartOf": {"@id": BASE + "#website"}, "about": {"@id": BASE + "#practice"}, "mainEntity": {"@id": BASE + "#practice"},
-         "inLanguage": "en-US", "datePublished": lm, "dateModified": lm},
-        {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
-            {"@type": "ListItem", "position": 2, "name": "Make a referral", "item": url}]}
-    ]}, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
-    page = render(tplpath.read_text(encoding='utf-8'), dict(noindex=NOINDEX, favicon=FAVICON, root=root, base=BASE, jsonld=ld,
-                  header=relink(header_html, root), footer=relink(footer_html, root), crisis=crisis_html))
+    common = dict(noindex=NOINDEX, favicon=FAVICON, root=root, base=BASE,
+                  header=relink(header_html, root), footer=relink(footer_html, root), crisis=crisis_html, callbar=relink(callbar_html, root))
+    if isinstance(tplpath, str) and tplpath.startswith('legal:'):
+        d = json.loads((LEGAL_DIR / (tplpath.split(':', 1)[1] + '.json')).read_text(encoding='utf-8'))
+        if '\u2014' in json.dumps(d, ensure_ascii=False): die('%s: contains an em dash' % pdir)
+        ld = ldjson({"@context": "https://schema.org", "@graph": [
+            {"@type": "WebPage", "@id": url + "#page", "url": url, "name": d['title'] + " | Modern Balance Therapy", "description": d['desc'],
+             "isPartOf": {"@id": BASE + "#website"}, "about": {"@id": BASE + "#practice"}, "inLanguage": "en-US", "datePublished": lm, "dateModified": lm},
+            crumb_ld(d['title'], url)]})
+        ctx = dict(common, jsonld=ld, slug=pdir, title=esc(d['title']), desc=esc(d['desc']), kicker=esc(d['kicker']), h1=d['h1'],
+                   updated=d.get('updated', 'November 18, 2026'), summary_html=''.join('<li>%s</li>' % x for x in d['summary']), body_html=d['body_html'])
+        page = render(legal_tpl, ctx)
+    else:
+        ld = ldjson({"@context": "https://schema.org", "@graph": [
+            {"@type": ["WebPage", "ContactPage"], "@id": url + "#page", "url": url, "name": "Make a Referral | Modern Balance Therapy",
+             "description": "Refer a client, student, parishioner or family member to Modern Balance Therapy for secure telehealth counseling anywhere in Texas.",
+             "isPartOf": {"@id": BASE + "#website"}, "about": {"@id": BASE + "#practice"}, "mainEntity": {"@id": BASE + "#practice"},
+             "inLanguage": "en-US", "datePublished": lm, "dateModified": lm},
+            crumb_ld("Make a referral", url)]})
+        page = render(tplpath.read_text(encoding='utf-8'), dict(common, jsonld=ld))
     (DEPLOY / pdir).mkdir(exist_ok=True)
     (DEPLOY / pdir / 'index.html').write_text(page, encoding='utf-8')
     print('  wrote %s/index.html' % pdir)
