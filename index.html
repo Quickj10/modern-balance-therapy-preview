@@ -157,8 +157,8 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 .mirror .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,80px);align-items:center}
 .mirror .ph{aspect-ratio:1;width:100%;max-width:460px;background:linear-gradient(180deg,var(--lav-soft) 0%,#fff 60%,var(--sage-soft) 100%)}
 .mirror h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
-.mirror ol{list-style:none;margin:30px 0 0;padding:0}
-.mirror li{font-family:var(--display);font-style:italic;font-size:clamp(1.25rem,2vw,1.5rem);line-height:1.35;padding:14px 0;border-top:1px solid var(--line);color:var(--ink)}
+.mirror ol{list-style:none;margin:36px 0 0;padding:0}
+.mirror li{font-family:var(--display);font-style:italic;font-size:clamp(1.3rem,2.1vw,1.6rem);line-height:1.35;padding:18px 0;border-top:1px solid var(--line);color:var(--ink)}
 .mirror li:last-child{border-bottom:1px solid var(--line)}
 .mirror .after{margin-top:24px;color:var(--muted);max-width:32em}
 @media (max-width:860px){ .mirror .wrap{grid-template-columns:1fr} .mirror .ph{max-width:360px} }
@@ -179,22 +179,37 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 .focus .ph{aspect-ratio:3/4;width:100%;max-width:440px;position:sticky;top:96px;background:linear-gradient(180deg,var(--sage-soft) 0%,#fff 50%,var(--lav-soft) 100%)}
 .focus h2{font-size:clamp(2rem,3.8vw,2.9rem);color:var(--violet-deep);margin-top:14px}
 .focus .lede{margin-top:14px}
-.focus ul{list-style:none;margin:32px 0 0;padding:0}
-.focus li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.focus ul{list-style:none;margin:40px 0 0;padding:0}
+.focus li{display:grid;gap:8px;padding:22px 0;border-top:1px solid var(--line)}
 .focus li:last-child{border-bottom:1px solid var(--line)}
+.focus .li-head{display:flex;align-items:center;justify-content:space-between;gap:18px}
 .focus li h3{font-family:var(--body);font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.4}
-.focus li p{grid-column:1 / -1;color:var(--muted);font-size:.98rem;max-width:36em}
+.focus li p{color:var(--muted);font-size:.98rem;max-width:36em}
+.focus li p.one{color:var(--ink);font-weight:400}
 .focus li .tag{font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);border:1px solid var(--violet);border-radius:999px;padding:.3em .7em;white-space:nowrap}
-.focus .also{margin-top:36px}
-.focus .also-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px;margin-top:14px}
-.focus .also-grid h3{font-family:var(--display);font-size:1.3rem;font-weight:500;margin-bottom:6px}
-.focus .also-grid p{color:var(--muted);font-size:.95rem}
-@media (max-width:860px){ .focus .wrap{grid-template-columns:1fr} .focus .ph{position:static;max-width:360px} .focus .also-grid{grid-template-columns:1fr} }
+.focus .also{margin-top:56px}
+.focus .also-list{margin-top:18px}
+.focus .also-list h3{font-family:var(--display);font-size:1.3rem;font-weight:500;letter-spacing:0;text-transform:none}
+@media (max-width:860px){ .focus .wrap{grid-template-columns:1fr} .focus .ph{position:static;max-width:360px} }
+
+/* disclosures: visible copy stays short, the rest opens on click */
+details.more{margin:0}
+details.more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);padding:6px 0;min-height:32px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .25s}
+details.more[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+details.more>summary:hover{color:var(--violet-deep)}
+details.more>p,details.more>.panel{margin-top:10px}
+details.more>.panel{display:grid;gap:14px;max-width:38em;color:var(--ink)}
+@media (prefers-reduced-motion: no-preference){ details.more[open]>p,details.more[open]>.panel{animation:tin .35s ease-out both} }
+.bio-more{margin-top:4px}
+.chips-static{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips-static li{font-size:.84rem;font-weight:500;border:1px solid var(--line-strong);border-radius:999px;padding:.5em .95em;background:#fff}
 
 /* steps */
 .steps{text-align:center}
 .steps h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
-.steps .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:52px;text-align:left}
+.steps .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:60px;text-align:left}
 .steps .step{min-width:0}
 .steps .num{font-family:var(--display);font-size:3.2rem;font-weight:400;line-height:1;color:var(--violet);margin-bottom:10px}
 .steps h3{font-size:1.5rem;margin-bottom:10px}
@@ -209,13 +224,10 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 .about .ph .init{font-family:var(--display);font-size:clamp(4rem,9vw,6.5rem);font-weight:400;color:var(--violet);opacity:.5}
 .about h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-top:14px}
 .about .cred{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:16px}
-.about .bio{margin-top:26px;display:grid;gap:18px;max-width:38em;color:var(--ink)}
-.about .tools{margin-top:30px}
-.about .tools ul{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
-.about .tools li{font-size:.9rem;padding:10px 0;border-top:1px solid var(--line)}
-.about .pull{margin-top:34px;font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.8rem);line-height:1.35;max-width:26em}
+.about .bio{margin-top:30px;display:grid;gap:18px;max-width:38em;color:var(--ink)}
+.about .tools{margin-top:40px}
+.about .pull{margin-top:44px;font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.8rem);line-height:1.35;max-width:26em}
 @media (max-width:860px){ .about .wrap{grid-template-columns:1fr} .about .ph{max-width:340px} }
-@media (max-width:540px){ .about .tools ul{grid-template-columns:1fr} }
 
 /* fees */
 .fees{text-align:center}
@@ -228,7 +240,8 @@ main section[id],#book,#top{scroll-margin-top:calc(100px + env(safe-area-inset-t
 .fees .card p{color:var(--muted);font-size:.96rem}
 .fees .pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .fees .pay span{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.5em .9em}
-.fees .gfe{margin:30px auto 0;font-size:.92rem;color:var(--muted);max-width:52em}
+.fees .gfe{margin:34px auto 0;max-width:52em;text-align:left;display:inline-block}
+.fees .gfe>p{font-size:.92rem;color:var(--muted)}
 @media (max-width:860px){ .fees .grid{grid-template-columns:1fr} }
 
 /* from the blog */
@@ -334,6 +347,27 @@ footer.site a:hover{color:var(--violet)}
 footer.site .tag{font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--violet-deep);margin-top:14px}
 footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-size:.8rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:760px){ footer.site .wrap{grid-template-columns:1fr} }
+/* footer stone stack: the traveling top stone lands here on desktop; resting state is the complete mark */
+footer.site .foot-mark{display:block;padding-bottom:36px;text-align:center}
+.foot-stack{position:relative;display:inline-block;width:120px;height:120px;transform-origin:50% 100%}
+.foot-stack svg{display:block;width:100%;height:100%;overflow:visible}
+.foot-stack .fs{transform-box:fill-box;transform-origin:50% 100%}
+.foot-slot{position:absolute;left:33.8%;top:23.8%;width:35.3%;height:20%;pointer-events:none}
+html.has-traveler .foot-top{opacity:0}
+html.has-traveler footer.site.landed .foot-top{opacity:1;animation:footLand .55s ease-out both}
+html.has-traveler footer.site.landed .foot-stack{animation:fwiggle .9s ease-in-out both .25s}
+@keyframes footLand{0%{transform:scale(1.06,.94)} 45%{transform:scale(.99,1.02)} 100%{transform:none}}
+@keyframes fwiggle{0%{transform:rotate(0)} 25%{transform:rotate(3deg)} 50%{transform:rotate(-2.5deg)} 72%{transform:rotate(1.5deg)} 88%{transform:rotate(-.5deg)} 100%{transform:rotate(0)}}
+@keyframes footDrop{0%{transform:translateY(-70px) rotate(-7deg);opacity:0} 15%{opacity:1} 70%{transform:translateY(0) rotate(0) scale(1,1)} 80%{transform:scale(1.06,.94)} 92%{transform:scale(.99,1.02)} 100%{transform:none}}
+@media (max-width:900px){
+  .foot-stack{width:96px;height:96px}
+  @supports (animation-timeline: view()){ .foot-stack{view-timeline-name:--foot;view-timeline-axis:block} .foot-stack .foot-top{animation:footDrop linear both;animation-timeline:--foot;animation-range:entry 15% entry 90%} }
+}
+.traveler{position:fixed;left:0;top:0;width:42px;height:24px;opacity:0;pointer-events:none;z-index:8;will-change:transform,opacity;transition:opacity .4s;display:none;filter:drop-shadow(0 6px 10px rgba(107,92,171,.25))}
+.traveler svg{display:block;width:100%;height:100%;overflow:visible}
+html.has-traveler .traveler{display:block}
+.traveler.on{opacity:1}
+@media (prefers-reduced-motion: reduce){ .foot-stack .foot-top,.foot-stack{animation:none !important;opacity:1 !important} .traveler{display:none !important} }
 
 /* stacking stones: resting state is the finished stack, .play runs the drop sequence */
 .stack{text-align:center;padding-block:clamp(56px,8vw,104px)}
@@ -415,7 +449,7 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
     <div>
       <p class="kicker reveal">Private telehealth therapy across Texas</p>
       <h1 class="reveal" style="--d:4%">You don't have to hold it all together <em>alone</em>.</h1>
-      <p class="lede reveal" style="--d:8%">Modern Balance Therapy is a private practice for individuals and couples. Trauma and PTSD are Jackie's specialty, alongside anxiety, depression and the big transitions of a busy modern life. Secure video sessions, evenings and weekends included.</p>
+      <p class="lede reveal" style="--d:8%">Private video therapy for individuals and couples, with trauma and PTSD as Jackie's specialty. Anxiety, depression and big life transitions are welcome too, evenings and weekends included.</p>
       <div class="actions reveal" style="--d:12%">
         <a class="btn btn-primary magnetic" href="#book"><span class="lbl">Book a free 15-minute consult</span></a>
         <a class="textlink" href="#how">How it works</a>
@@ -451,13 +485,11 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
     <div>
       <p class="eyebrow reveal">Welcome, I'm glad you're here</p>
       <h2 class="reveal" style="--d:4%">Reaching out takes real <span class="hl">courage</span>, and functioning is not the same as okay.</h2>
-      <p class="after reveal" style="--d:8%">Most people who reach out are not in crisis. They are tired of carrying something alone and ready for a steadier way to live. If any of this sounds like you, you are in the right place.</p>
+      <p class="after reveal" style="--d:8%">Most people who reach out are not in crisis. They are tired of carrying something alone and ready for a steadier way to live.</p>
       <ol>
         <li class="reveal" style="--d:10%">"I'm getting everything done, and I'm running on empty."</li>
-        <li class="reveal" style="--d:13%">"I can't turn my brain off at night."</li>
-        <li class="reveal" style="--d:16%">"Everyone thinks I'm fine. I'm not sure I am."</li>
-        <li class="reveal" style="--d:19%">"Something happened years ago and it still runs the show."</li>
-        <li class="reveal" style="--d:22%">"We love each other. We just keep having the same fight."</li>
+        <li class="reveal" style="--d:14%">"Everyone thinks I'm fine. I'm not sure I am."</li>
+        <li class="reveal" style="--d:18%">"Something happened years ago and it still runs the show."</li>
       </ol>
     </div>
   </div>
@@ -498,22 +530,22 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
     <div>
       <p class="eyebrow reveal">How I can help</p>
       <h2 class="reveal" style="--d:4%">Practical support for the things that keep you up at night.</h2>
-      <p class="lede reveal" style="--d:8%">Individual therapy for ages 12 and up, from teens to seniors, and couples counseling. Jackie's favorite work is with people in their 20s and 30s, and the door is open to anyone who needs it.</p>
+      <p class="lede reveal" style="--d:8%">Individual therapy for ages 12 and up, and couples counseling. Jackie's favorite work is with people in their 20s and 30s, and the door is open to anyone.</p>
       <ul>
-        <li class="reveal"><h3>Trauma and PTSD</h3><span class="tag">Specialty</span><p>Flashbacks, hypervigilance, numbness, or a past that keeps steering the present. Trauma-focused care at a pace you set.</p></li>
-        <li class="reveal" style="--d:3%"><h3>Anxiety and overthinking</h3><p>Racing thoughts, constant what-ifs, the tight chest that shows up before anything has gone wrong.</p></li>
-        <li class="reveal" style="--d:6%"><h3>Depression and mood</h3><p>Low energy, flat days, swings you can't predict. Support for depression and mood disorders that fits real life.</p></li>
-        <li class="reveal" style="--d:9%"><h3>Couples and pre-marital</h3><p>Communication, trust, the same argument on repeat. Also for couples who want a strong start before the wedding.</p></li>
-        <li class="reveal" style="--d:12%"><h3>Life transitions</h3><p>New city, new role, new relationship, new loss. Change you chose and change you didn't.</p></li>
-        <li class="reveal" style="--d:15%"><h3>Grief, loss and family</h3><p>Loss of a person, a plan, a version of yourself. Family strain that nobody at the table knows how to name.</p></li>
+        <li class="reveal"><div class="li-head"><h3>Trauma and PTSD</h3><span class="tag">Specialty</span></div><p class="one">Flashbacks, hypervigilance, numbness, or a past that keeps steering the present.</p><details class="more"><summary>More</summary><p>Trauma-focused care at a pace you set, using TF-CBT and other evidence-based approaches. We start with steadiness and safety. You never have to retell everything on day one.</p></details></li>
+        <li class="reveal" style="--d:3%"><div class="li-head"><h3>Anxiety and overthinking</h3></div><p class="one">Racing thoughts and what-ifs, the tight chest before anything has gone wrong.</p><details class="more"><summary>More</summary><p>Practical tools for calming the body and catching the thought loops early, plus room to understand what the worry is protecting you from.</p></details></li>
+        <li class="reveal" style="--d:6%"><div class="li-head"><h3>Depression and mood</h3></div><p class="one">Low energy, flat days, swings you can't predict.</p><details class="more"><summary>More</summary><p>Support for depression and mood disorders that fits real life. Small, concrete steps first, and the bigger picture as energy returns.</p></details></li>
+        <li class="reveal" style="--d:9%"><div class="li-head"><h3>Couples and pre-marital</h3></div><p class="one">Communication, trust, and the same argument on repeat.</p><details class="more"><summary>More</summary><p>For couples at any stage, including those who want a strong start before the wedding. Both partners join by video from wherever they are.</p></details></li>
+        <li class="reveal" style="--d:12%"><div class="li-head"><h3>Life transitions</h3></div><p class="one">New city, new role, new loss. Change you chose and change you didn't.</p><details class="more"><summary>More</summary><p>Moves, career shifts, new parenthood, breakups, retirement. Help finding your footing while the ground is still moving.</p></details></li>
+        <li class="reveal" style="--d:15%"><div class="li-head"><h3>Grief, loss and family</h3></div><p class="one">Loss of a person, a plan, or a version of yourself.</p><details class="more"><summary>More</summary><p>Grief in all its forms, and family strain that nobody at the table knows how to name. Space to feel it and a way to carry it.</p></details></li>
       </ul>
       <div class="also reveal">
         <p class="eyebrow">Also available</p>
-        <div class="also-grid">
-          <div><h3>Behavioral plans and autism support</h3><p>For parents navigating behavioral challenges at home, including children on the autism spectrum. Practical, individualized strategies.</p></div>
-          <div><h3>Parent coaching</h3><p>Stronger relationships with your kids, healthier boundaries, fewer standoffs. Guidance for the hard seasons of parenting.</p></div>
-          <div><h3>Life coaching</h3><p>Goal-focused sessions for adults who want clarity, confidence and a concrete next step, without a clinical frame.</p></div>
-        </div>
+        <ul class="also-list">
+          <li><div class="li-head"><h3>Behavioral plans and autism support</h3></div><p class="one">Practical, individualized strategies for parents facing behavioral challenges at home.</p><details class="more"><summary>More</summary><p>Including children on the autism spectrum. Plans you can actually run on a school night, adjusted as your child grows.</p></details></li>
+          <li><div class="li-head"><h3>Parent coaching</h3></div><p class="one">Stronger relationships with your kids, healthier boundaries, fewer standoffs.</p><details class="more"><summary>More</summary><p>Guidance for the hard seasons of parenting, from toddler years to teens, in short, focused sessions.</p></details></li>
+          <li><div class="li-head"><h3>Life coaching</h3></div><p class="one">Goal-focused sessions for clarity, confidence and a concrete next step.</p><details class="more"><summary>More</summary><p>For adults who want structure and accountability without a clinical frame. Not therapy, and Jackie will say so if therapy is the better fit.</p></details></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -524,9 +556,9 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
     <p class="eyebrow reveal">How it works</p>
     <h2 class="reveal" style="--d:4%">Three steps from <em>maybe</em> to your first session.</h2>
     <div class="row">
-      <div class="step reveal"><div class="num">01.</div><h3>Request a consult</h3><p>Fill out the short form below. It takes about two minutes and asks nothing you'd rather not put in writing.</p></div>
-      <div class="step reveal" style="--d:5%"><div class="num">02.</div><h3>Talk for 15 minutes, free</h3><p>A quick video or phone call to hear what's going on, answer your questions and see if we're a good fit. No pressure either way.</p></div>
-      <div class="step reveal" style="--d:10%"><div class="num">03.</div><h3>Start online sessions</h3><p>Individual or couples sessions by video from wherever you are in Texas, weekly or every other week. Evening and weekend times are available.</p></div>
+      <div class="step reveal"><div class="num">01.</div><h3>Request a consult</h3><p>Fill out the short form below. Two minutes, and nothing you'd rather not put in writing.</p></div>
+      <div class="step reveal" style="--d:5%"><div class="num">02.</div><h3>Talk for 15 minutes, free</h3><p>A quick video or phone call to hear what's going on and see if we're a good fit. No pressure either way.</p></div>
+      <div class="step reveal" style="--d:10%"><div class="num">03.</div><h3>Start online sessions</h3><p>Video sessions from anywhere in Texas, weekly or every other week. Evening and weekend times available.</p></div>
     </div>
     <div class="cta reveal" style="--d:12%">
       <a class="btn btn-primary" href="#book"><span class="lbl">Request your free consult</span></a>
@@ -546,13 +578,20 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
       <h2 class="reveal" style="--d:4%">Hi, I'm Jackie. A steady, down-to-earth therapist for a <em>very fast</em> world.</h2>
       <p class="cred reveal" style="--d:7%">Licensed Professional Counselor · Over a decade in the field</p>
       <div class="bio">
-        <p class="reveal" style="--d:10%">Jackie McGreggor is a Licensed Professional Counselor in Texas and the founder of Modern Balance Therapy. Over more than ten years she has worked in private practice, counseling centers, correctional facilities and community programs, with people from every walk of life.</p>
-        <p class="reveal" style="--d:13%">She built the practice around a simple observation: the modern world asks a lot of people, and most of us were never taught how to put any of it down. Her approach is eclectic and evidence-based, shaped to each person rather than the other way around, with practical tools you can use between sessions.</p>
-        <p class="reveal" style="--d:16%">Expect a safe, nonjudgmental space, real conversation, and someone who will walk alongside you rather than talk at you.</p>
+        <p class="reveal" style="--d:10%">Jackie McGreggor is a Licensed Professional Counselor in Texas and the founder of Modern Balance Therapy, with more than ten years across private practice, counseling centers and community programs.</p>
+        <p class="reveal" style="--d:13%">Her approach is evidence-based and shaped to each person, with practical tools you can use between sessions.</p>
+        <details class="more bio-more reveal" style="--d:15%">
+          <summary>Read Jackie's full bio</summary>
+          <div class="panel">
+            <p>Jackie built the practice around a simple observation: the modern world asks a lot of people, and most of us were never taught how to put any of it down.</p>
+            <p>Over more than a decade she has worked in private practice, counseling centers, correctional facilities and community programs, with people from every walk of life. She works with teens from age 12, adults, seniors and couples, and her favorite work is with people in their 20s and 30s.</p>
+            <p>Her style is eclectic and evidence-based, shaped to each person rather than the other way around. Expect a safe, nonjudgmental space, real conversation, and someone who will walk alongside you rather than talk at you.</p>
+          </div>
+        </details>
       </div>
       <div class="tools reveal" style="--d:18%">
         <p class="eyebrow">Approaches Jackie draws on</p>
-        <ul>
+        <ul class="chips-static">
           <li>Trauma-Focused CBT</li><li>Cognitive Behavioral Therapy</li><li>Psychodynamic Therapy</li><li>Solution-Focused Brief Therapy</li><li>Person-Centered Therapy</li><li>Family Systems Therapy</li>
         </ul>
       </div>
@@ -566,9 +605,9 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
     <p class="eyebrow reveal">From the blog</p>
     <h2 class="reveal" style="--d:4%">Answers to the questions people ask <em>before</em> they call.</h2>
     <div class="grid">
-      <a class="card reveal" href="blog/how-do-you-know-if-you-need-therapy/"><span class="eyebrow">Getting started</span><h3>How Do You Know If You Need Therapy? 12 Signs It Might Be Time</h3><p>You do not have to be in crisis. The quieter signs that it is time to talk to someone, and what to do next.</p><span class="read">Read the article</span></a>
-      <a class="card reveal" style="--d:5%" href="blog/affordable-therapy-without-insurance/"><span class="eyebrow">Cost</span><h3>Affordable Therapy Without Insurance: Sliding Scale, Superbills and Other Real Options</h3><p>What therapy actually costs, how private pay works, and the options that make it workable on a real budget.</p><span class="read">Read the article</span></a>
-      <a class="card reveal" style="--d:10%" href="blog/what-to-expect-first-therapy-session/"><span class="eyebrow">First session</span><h3>What to Expect in Your First Therapy Session (So You Can Stop Dreading It)</h3><p>What happens in the first hour, what you do not have to prepare, and how to know if it is a fit.</p><span class="read">Read the article</span></a>
+      <a class="card reveal" href="blog/how-do-you-know-if-you-need-therapy/"><span class="eyebrow">Getting started</span><h3>How Do You Know If You Need Therapy? 12 Signs It Might Be Time</h3><p>You do not have to be in crisis. The quieter signs it is time to talk to someone.</p><span class="read">Read the article</span></a>
+      <a class="card reveal" style="--d:5%" href="blog/affordable-therapy-without-insurance/"><span class="eyebrow">Cost</span><h3>Affordable Therapy Without Insurance: Sliding Scale, Superbills and Other Real Options</h3><p>What therapy costs, how private pay works, and the options that make it workable.</p><span class="read">Read the article</span></a>
+      <a class="card reveal" style="--d:10%" href="blog/what-to-expect-first-therapy-session/"><span class="eyebrow">First session</span><h3>What to Expect in Your First Therapy Session (So You Can Stop Dreading It)</h3><p>What happens in the first hour, and how to know if it is a fit.</p><span class="read">Read the article</span></a>
     </div>
     <a class="textlink all reveal" href="blog/">All articles</a>
   </div>
@@ -578,13 +617,13 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
   <div class="wrap">
     <p class="eyebrow reveal">Fees and payment</p>
     <h2 class="reveal" style="--d:4%">Clear pricing, no insurance paperwork.</h2>
-    <p class="lede reveal" style="--d:8%">Sessions are $150 to $175 for individuals and $200 for couples, by secure video. Insurance is not accepted, and a superbill for out-of-network benefits is available on request. No diagnosis on file with a third party, no surprises.</p>
+    <p class="lede reveal" style="--d:8%">Sessions are $150 to $175 for individuals and $200 for couples, by secure video. Insurance is not accepted, and a superbill for out-of-network benefits is available on request.</p>
     <div class="grid">
       <div class="card reveal"><h3>Individual sessions</h3><div class="big">$150 to $175</div><p>50 minutes, ages 12 and up. Weekly or every other week. Evening and weekend times available.</p></div>
       <div class="card reveal" style="--d:5%"><h3>Couples sessions</h3><div class="big">$200</div><p>60 to 80 minutes, for couples at any stage, including pre-marital counseling. Both partners join from wherever they are.</p></div>
       <div class="card reveal" style="--d:10%"><h3>Sliding scale</h3><div class="big">Ask at your consult</div><p>A limited number of reduced-fee spots are held for people with financial need. Bring it up on the call and we will talk it through together.</p><div class="pay"><span>PayPal</span><span>Venmo</span><span>Cash App</span></div></div>
     </div>
-    <p class="gfe reveal" style="--d:12%">Under the federal No Surprises Act, you have the right to a Good Faith Estimate of what your care is expected to cost. You will receive one in writing before your first session, and any time you ask.</p>
+    <details class="more gfe reveal" style="--d:12%"><summary>About the Good Faith Estimate</summary><p>Under the federal No Surprises Act, you have the right to a Good Faith Estimate of what your care is expected to cost. You will receive one in writing before your first session, and any time you ask.</p></details>
   </div>
 </section>
 
@@ -594,7 +633,7 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
       <div>
         <p class="eyebrow">Journals by Jackie · Coming soon</p>
         <h2>Guided mental health journals, written by <em>your</em> therapist.</h2>
-        <p class="lede">Jackie is finishing a series of guided journals built on the same tools she uses in session. Printed and shipped straight to your door. Leave your email and you will be the first to know when the shop opens.</p>
+        <p class="lede">Jackie is finishing a series of guided journals built on the tools she uses in session. Leave your email and you will be the first to know when the shop opens.</p>
       </div>
       <form class="notify" id="notifyForm" novalidate>
         <label>Email<input type="email" id="n-email" name="email" autocomplete="email" required placeholder="you@example.com"></label>
@@ -647,7 +686,7 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
     <div class="side">
       <p class="eyebrow reveal">Book a free consult</p>
       <h2 class="reveal" style="--d:4%">Tell Jackie a little about what's going on.</h2>
-      <p class="reveal" style="--d:8%">Two minutes, no commitment. You will hear back within one business day to set up your free 15-minute consult.</p>
+      <p class="reveal" style="--d:8%">Two minutes, no commitment, and a reply within one business day to set up your free 15-minute consult.</p>
       <div class="direct reveal" style="--d:10%">
         <div><span>jackie@modernbalancetherapy.com</span><button type="button" data-copy="jackie@modernbalancetherapy.com">Copy</button></div>
         <div><span>832.960.3272</span><button type="button" data-copy="8329603272">Copy</button></div>
@@ -702,6 +741,16 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
 </aside>
 
 <footer class="site">
+  <div class="wrap foot-mark">
+    <div class="foot-stack" aria-hidden="true">
+      <svg viewBox="0 0 34 34" class="fstack">
+        <ellipse class="fs fs1" cx="17" cy="28.5" rx="13" ry="4.5" fill="var(--sage-light)"/>
+        <ellipse class="fs fs2" cx="16" cy="19.5" rx="9.5" ry="4" fill="var(--lav)"/>
+        <ellipse class="fs foot-top" cx="17.5" cy="11.5" rx="6" ry="3.4" fill="var(--violet)"/>
+      </svg>
+      <span class="foot-slot"></span>
+    </div>
+  </div>
   <div class="wrap">
     <div>
       <h3>Modern Balance Therapy</h3>
@@ -722,6 +771,7 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
     <span>Privacy practices · Good Faith Estimate</span>
   </div>
 </footer>
+<div class="traveler" id="traveler" aria-hidden="true"><svg viewBox="0 0 12 6.8"><ellipse cx="6" cy="3.4" rx="6" ry="3.4" fill="var(--violet)"/></svg></div>
 <div class="egg" id="egg" aria-hidden="true">Balance is something you practice, not somewhere you arrive.</div>
 
 <script>
@@ -774,6 +824,58 @@ footer.site .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--l
   if('IntersectionObserver' in window && !reduce){ var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ playStack(); io.disconnect(); } }); },{threshold:.4}); io.observe(sk); }
   pile.addEventListener('click',playStack);
   pile.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); playStack(); } });
+
+  /* tumbling stone: travels the right gutter, lands in the footer mark (desktop, motion allowed) */
+  (function(){
+    var trav=document.getElementById('traveler'), foot=document.querySelector('footer.site'), slot=document.querySelector('.foot-slot');
+    var wide=window.matchMedia('(min-width:901px)');
+    if(!trav||!foot||!slot||!sk||reduce) return;
+    var root=document.documentElement, firstWrap=document.querySelector('main .wrap')||document.querySelector('.wrap');
+    var ticking=false, landed=false, BW=42, BH=24;
+    function easeInOut(t){ return t<.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+    function easeIn(t){ return t*t; }
+    function frame(){
+      ticking=false;
+      if(!wide.matches){ root.classList.remove('has-traveler'); foot.classList.remove('landed'); trav.classList.remove('on'); landed=false; return; }
+      root.classList.add('has-traveler');
+      var vh=window.innerHeight, vw=window.innerWidth, sy=window.scrollY||window.pageYOffset;
+      var wr=firstWrap.getBoundingClientRect(), gutter=vw-wr.right;
+      var size=gutter<60?18:26;
+      var restX=gutter<60 ? vw-6-size/2 : wr.right+40+size/2;
+      var restY=vh*0.58;
+      var sr=slot.getBoundingClientRect();
+      var maxScroll=Math.max(0,document.documentElement.scrollHeight-vh);
+      var slotAtMax=sr.top+sr.height/2-(maxScroll-sy);
+      var landY=Math.min(restY,slotAtMax);
+      var d=sr.top+sr.height/2-landY;
+      var show=sy>(sk.getBoundingClientRect().top+sy)+200;
+      if(d<=0.5 || sy>=maxScroll-1){
+        if(!landed){ landed=true; foot.classList.add('landed'); }
+        trav.classList.remove('on');
+        return;
+      }
+      if(landed){ landed=false; foot.classList.remove('landed'); }
+      var rot=sy*0.35, bob=Math.sin(sy/180)*6;
+      var x=restX, y=restY+bob, s=size/BW, r=rot;
+      var zone=1.2*vh;
+      if(d<zone){
+        var t=1-d/zone, tx=easeInOut(t), ty=easeIn(t);
+        var cx=sr.left+sr.width/2, cy=sr.top+sr.height/2;
+        x=restX+(cx-restX)*tx;
+        y=(restY+bob*(1-t))+(cy-restY)*ty;
+        s=size/BW+((sr.width/BW)-size/BW)*tx;
+        var near=Math.round(rot/360)*360;
+        r=rot+(near-rot)*easeInOut(t);
+      }
+      trav.style.transform='translate3d('+(x-BW/2).toFixed(2)+'px,'+(y-BH/2).toFixed(2)+'px,0) rotate('+r.toFixed(2)+'deg) scale('+s.toFixed(3)+')';
+      trav.classList.toggle('on',show);
+    }
+    function req(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+    window.addEventListener('scroll',req,{passive:true});
+    window.addEventListener('resize',req);
+    wide.addEventListener ? wide.addEventListener('change',req) : wide.addListener(req);
+    req();
+  })();
 
   /* copy buttons */
   document.querySelectorAll('[data-copy]').forEach(function(btn){
