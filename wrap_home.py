@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Wrap src/index.html (artifact page contract) into deploy/index.html (full document).
+"""Wrap src/home.html (artifact page contract) into deploy/index.html (full document).
 Usage: python3 -I wrap_home.py            # preview build (noindex)
        python3 -I wrap_home.py --launch   # drops the preview noindex line
 """
 import sys, pathlib, re
 here=pathlib.Path(__file__).resolve().parent
-src=(here/'src'/'index.html').read_text(encoding='utf-8')
+src=(here/'src'/'home.html').read_text(encoding='utf-8')
 head,sep,body=src.partition('</style>')
 assert sep, 'no </style> in site/index.html'
 head='\n'.join(l for l in head.splitlines() if 'claude:viewport-fit-sides' not in l)

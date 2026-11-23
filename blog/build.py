@@ -5,7 +5,7 @@
   python3 -I blog/build.py --launch   # drops the preview noindex lines
 
 Reads  blog/_src/<slug>.json (see _src/SPEC.md), blog/_src/TOPICS.json, blog/_template.html,
-       blog/_article.css and src/index.html (shared header, footer, crisis strip, CSS).
+       blog/_article.css and src/home.html (shared header, footer, crisis strip, CSS).
 Writes blog/<slug>/index.html, blog/index.html, assets/blog.css, assets/blog.js,
        sitemap.xml, robots.txt, llms.txt (deploy root).
 Fails loudly on a missing field or an unverified reference.
@@ -14,7 +14,7 @@ import json, re, sys, html, pathlib, datetime
 
 HERE = pathlib.Path(__file__).resolve().parent          # deploy/blog
 DEPLOY = HERE.parent                                     # deploy
-SITE_SRC = DEPLOY / 'src' / 'index.html'                 # artifact-contract home page (copied in from outputs/modern-balance-therapy/site)
+SITE_SRC = DEPLOY / 'src' / 'home.html'                  # artifact-contract home page (copied in from outputs/modern-balance-therapy/site)
 SRC = HERE / '_src'
 BASE = 'https://modernbalancetherapy.com/'
 LAUNCH = '--launch' in sys.argv
